@@ -1,19 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
+  selector: 'app-movie',
+  templateUrl: './movie.component.html',
   styleUrls: [
-    './login.component.css',
-    'util.css',
-    "fonts/font-awesome-4.7.0/css/font-awesome.min.css",
-    "fonts/Linearicons-Free-v1.0.0/icon-font.min.css",
-    "vendor/animate/animate.css",
-    "vendor/css-hamburgers/hamburgers.min.css",
-    "vendor/select2/select2.min.css"
+    './movie.component.css',
+
   ]
 })
-export class LoginComponent implements OnInit {
+export class MovieComponent implements OnInit {
 
   constructor() { }
 

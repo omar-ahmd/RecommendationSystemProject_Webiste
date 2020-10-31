@@ -3,37 +3,37 @@
 
 @font-face {
     font-family: Poppins-Regular;
-    src: url('./fonts/poppins/Poppins-Regular.ttf');
+    src: url('../../account/login/fonts/poppins/Poppins-Regular.ttf');
 }
 
 @font-face {
     font-family: Poppins-Bold;
-    src: url('./fonts/poppins/Poppins-Bold.ttf');
+    src: url('../../account/login/fonts/poppins/Poppins-Bold.ttf');
 }
 
 @font-face {
     font-family: Poppins-Medium;
-    src: url('./fonts/poppins/Poppins-Medium.ttf');
+    src: url('../../account/login/fonts/poppins/Poppins-Medium.ttf');
 }
 
 @font-face {
     font-family: Raleway-Regular;
-    src: url('./fonts/raleway/Raleway-Regular.ttf');
+    src: url('../../account/login/fonts/raleway/Raleway-Regular.ttf');
 }
 
 @font-face {
     font-family: Raleway-Black;
-    src: url('./fonts/raleway/Raleway-Black.ttf');
+    src: url('../../account/login/fonts/raleway/Raleway-Black.ttf');
 }
 
 @font-face {
     font-family: Raleway-SemiBold;
-    src: url('./fonts/raleway/Raleway-SemiBold.ttf');
+    src: url('../../account/login/fonts/raleway/Raleway-SemiBold.ttf');
 }
 
 @font-face {
     font-family: Raleway-Bold;
-    src: url('./fonts/raleway/Raleway-Bold.ttf');
+    src: url('../../account/login/fonts/raleway/Raleway-Bold.ttf');
 }
 
 
@@ -256,7 +256,7 @@ iframe {
     height: 100%;
     top: 0;
     left: 0;
-    background-image: url('images/img-01.png');
+    background-image: url('../../account/login/images/img-01.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

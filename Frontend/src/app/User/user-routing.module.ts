@@ -3,12 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 import { UserlayoutComponent } from './userlayout.component';
-
+import { MovieComponent } from './movie/movie.component'
 
 const routes: Routes = [
     {
         path: '', component: UserlayoutComponent,
         children: [
+            {path: 'movie',component: MovieComponent}
 
         ]
     }

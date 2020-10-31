@@ -3424,7 +3424,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 .footer {
     background-color: #28282d;
     display: block;
-    position: absolute;
+    position: relative;
     left: 0;
     right: 0;
     bottom: 0;
@@ -3437,7 +3437,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 
 .footer:before {
     content: '';
-    position: absolute;
+    position: relative;
     left: 0;
     right: 0;
     height: 2px;
