@@ -12,7 +12,9 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    
+    
     
   ],
   providers: [],

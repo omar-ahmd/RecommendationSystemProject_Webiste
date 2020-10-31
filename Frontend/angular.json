@@ -24,11 +24,18 @@
                             "src/assets"
                         ],
                         "styles": [
-                            "src/styles.css"
+                            "src/styles.css",
+                            "./node_modules/owl.carousel/dist/assets/owl.carousel.css",
+                            "./node_modules/owl.carousel/dist/assets/owl.theme.default.css"
+
                         ],
                         "scripts": [
                             "src/app/User/js/jquery-3.3.1.min.js",
-                            "src/app/User/js/bootstrap.bundle.min.js"
+                            "src/app/User/js/bootstrap.bundle.min.js",
+                            "./node_modules/jquery/dist/jquery.js",
+                            "./node_modules/owl.carousel/dist/owl.carousel.js"
+
+
                         ]
                     },
                     "configurations": {
@@ -88,11 +95,15 @@
                             "src/assets"
                         ],
                         "styles": [
-                            "src/styles.css"
+                            "src/styles.css",
+                            "./node_modules/owl.carousel/dist/assets/owl.carousel.css",
+                            "./node_modules/owl.carousel/dist/assets/owl.theme.default.css"
                         ],
                         "scripts": [
                             "src/app/User/js/jquery-3.3.1.min.js",
-                            "src/app/User/js/bootstrap.bundle.min.js"
+                            "src/app/User/js/bootstrap.bundle.min.js",
+                            "./node_modules/jquery/dist/jquery.js",
+                            "./node_modules/owl.carousel/dist/owl.carousel.js"
                         ]
                     }
                 },

@@ -7,15 +7,10 @@ import { Router } from '@angular/router';
     templateUrl: 'userlayout.component.html',
     styleUrls: [
         './userlayout.component.css',
-        './bootstrap-grid.min.css',
-        './bootstrap-reboot.min.css',
-        './css/owl.carousel.min.css',
-        "css/jquery.mCustomScrollbar.min.css"
-        ,"css/nouislider.min.css",
-        "css/ionicons.min.css",
-        "css/plyr.css",
-        "css/photoswipe.css",
-        "css/default-skin.css"
+        'css/bootstrap-grid.min.css',
+        'css/bootstrap-reboot.min.css',
+        "css/jquery.mCustomScrollbar.min.css",
+        "css/ionicons.min.css"
         ]
  })
 export class UserlayoutComponent {
