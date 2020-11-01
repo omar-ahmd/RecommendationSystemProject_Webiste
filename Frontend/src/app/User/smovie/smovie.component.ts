@@ -24,7 +24,7 @@ export class SmovieComponent implements OnInit {
   ngOnInit(): void {
     
     this.id = this.route.snapshot.paramMap.get('id');
-    this.movie = this.movies.getmovie(this.id);
+    this.movie = this.movies.getMovie(this.id);
     console.log(this.id)
     
   }

@@ -33,8 +33,8 @@
                             "src/app/User/js/jquery-3.3.1.min.js",
                             "src/app/User/js/bootstrap.bundle.min.js",
                             "./node_modules/jquery/dist/jquery.js",
-                            "./node_modules/owl.carousel/dist/owl.carousel.js"
 
+                            "./node_modules/owl.carousel/dist/owl.carousel.js"
 
                         ]
                     },
@@ -103,6 +103,7 @@
                             "src/app/User/js/jquery-3.3.1.min.js",
                             "src/app/User/js/bootstrap.bundle.min.js",
                             "./node_modules/jquery/dist/jquery.js",
+                            "./node_modules/jquery/dist/jquery.min.js",
                             "./node_modules/owl.carousel/dist/owl.carousel.js"
                         ]
                     }

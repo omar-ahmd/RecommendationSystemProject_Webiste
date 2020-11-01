@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="home__title"><b>NEW ITEMS</b> OF THIS SEASON</h1>
+                    <h1 class="home__title"><b>NEW MOVIES</b></h1>
 
                     <button class="home__nav home__nav--prev" type="button" (click)="owl.previous()">
 						<i class="icon ion-ios-arrow-round-back"></i>
@@ -21,7 +21,7 @@
 
                 <div class="col-12">
                     <owl-carousel [options]="customOptions" class="home__carousel" #owl>
-                        <div *ngFor="let mov of movie" class="item">
+                        <div *ngFor="let mov of NewMovie" class="item">
                             <!-- card -->
                             <div class="card card--big" (click)="Select(mov.id)">
                                 <div class="card__cover">
@@ -64,26 +64,21 @@
                 <div class="row">
                     <div class="col-12">
                         <!-- content title -->
-                        <h2 class="content__title">New items</h2>
+                        <h2 class="content__title">Recommended</h2>
                         <!-- end content title -->
 
                         <!-- content tabs nav -->
                         <ul class="nav nav-tabs content__tabs" id="content__tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#" (click)="tabclick($event)" role="tab" aria-controls="tab-1" aria-selected="true">NEW RELEASES</a>
+
+                            <li class="nav-item" (click)="TopMovies()">
+                                <a class="nav-link active" data-toggle="tab" href="#" (click)="tabclick($event)" role="tab" aria-controls="tab-2" aria-selected="false">Top Movies</a>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#" (click)="tabclick($event)" role="tab" aria-controls="tab-2" aria-selected="false">MOVIES</a>
+                            <li *ngIf="LoggedIn" class="nav-item" (click)="Reccomnended()">
+                                <a class="nav-link" data-toggle="tab" href="#" (click)="tabclick($event)" role="tab" aria-controls="tab-2" aria-selected="false">Recommened For you</a>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#" (click)="tabclick($event)" role="tab" aria-controls="tab-3" aria-selected="false">TV SERIES</a>
-                            </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#" (click)="tabclick($event)" role="tab" aria-controls="tab-4" aria-selected="false">CARTOONS</a>
-                            </li>
                         </ul>
                         <!-- end content tabs nav -->
 
@@ -97,13 +92,7 @@
 
                             <div class="content__mobile-tabs-menu dropdown-menu" aria-labelledby="mobile-tabs">
                                 <ul class="nav nav-tabs" role="tablist">
-                                    <li class="nav-item"><a class="nav-link " id="1-tab" data-toggle="tab" (click)="tabclick($event)" role="tab" aria-controls="tab-1" aria-selected="true">NEW RELEASES</a></li>
-
                                     <li class="nav-item"><a class="nav-link active" id="2-tab" data-toggle="tab" (click)="tabclick($event)" role="tab" aria-controls="tab-2" aria-selected="false">MOVIES</a></li>
-
-                                    <li class="nav-item"><a class="nav-link" id="3-tab" data-toggle="tab" (click)="tabclick($event)" role="tab" aria-controls="tab-3" aria-selected="false">TV SERIES</a></li>
-
-                                    <li class="nav-item"><a class="nav-link" id="4-tab" data-toggle="tab" (click)="tabclick($event)" role="tab" aria-controls="tab-4" aria-selected="false">CARTOONS</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -120,12 +109,12 @@
         <div class="container">
             <!-- content tabs -->
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="1-tab">
+                <div class="tab-pane fade show active" id="tab-1" role="tabpanel">
                     <div class="row">
 
 
                         <!-- card -->
-                        <div *ngFor="let mov of movie" class="col-6 col-sm-12 col-lg-6">
+                        <div *ngFor="let mov of NewMovie" class="col-6 col-sm-12 col-lg-6">
                             <div class="card card--list">
                                 <div class="row">
                                     <div class="col-12 col-sm-4">
@@ -187,13 +176,13 @@
             <div class="row">
                 <!-- section title -->
                 <div class="col-12">
-                    <h2 class="section__title">Expected premiere</h2>
+                    <h2 class="section__title">Other Movie</h2>
                 </div>
                 <!-- end section title -->
 
 
                 <!-- card -->
-                <div *ngFor="let mov of movie" class="col-6 col-sm-4 col-lg-3 col-xl-2">
+                <div *ngFor="let mov of NewMovie" class="col-6 col-sm-4 col-lg-3 col-xl-2">
                     <div class="card">
                         <div class="card__cover">
                             <img src="{{mov.url}}" alt="">

@@ -78,21 +78,34 @@ export class MovieService {
         },
     ]
     
-    
-    
-
-   
-
     constructor(
         
     ) {
         
     }
 
+    public getRecommendedMovies(email){
+
+    }
+    public getFilteredMovie(Genre,Rating,Releaseyear){
+
+    }
+    public getNewMovies(){
+
+    }
+    public getNewCartons(){
+
+    }
+    public getNews(){
+
+    }
+    public TopRatedMovies(){
+
+    }
     public getMovies(){
         return this.movie;
     }
-    public getmovie(id){
+    public getMovie(id){
         return this.movie[id=id-1]
     }
     

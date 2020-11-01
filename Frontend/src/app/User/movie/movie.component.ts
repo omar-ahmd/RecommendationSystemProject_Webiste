@@ -19,9 +19,10 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class MovieComponent implements OnInit {
 
-  constructor(movies : MovieService,private route:ActivatedRoute,private router:Router,authservice : AuthService) { 
-    if(authservice.loggedIn()){
-      this.movie = movies.getMovies()
+  constructor(movies : MovieService,private route:ActivatedRoute,private router:Router,private authservice : AuthService) { 
+    this.LoggedIn=this.authservice.loggedIn()
+    if(this.LoggedIn){
+      this.NewMovie = movies.getMovies()
     }
     else{
       
@@ -29,11 +30,14 @@ export class MovieComponent implements OnInit {
     
   
   }
-
-  movie: any[]
-
+  LoggedIn:boolean=false;
+  NewMovie: any[]
+  Toprated: any[]
+  Recommended: any[]
+  Other:any[]
   ngOnInit(): void {
     
+
   }
 
   customOptions={
@@ -73,7 +77,12 @@ export class MovieComponent implements OnInit {
   Select(idd){
     this.router.navigate(['./Main/movie',idd])
   }
-  
+  TopMovies(){
+
+  }
+  Reccomnended(){
+
+  }
   
 
 }
