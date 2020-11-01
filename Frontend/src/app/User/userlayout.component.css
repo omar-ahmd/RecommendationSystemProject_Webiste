@@ -1,44 +1,3 @@
-/*----------------------------------------
-[Master Stylesheet]
-
-Project:	FlixGo
-Version:	1.0
-Primary use:	FlixGo Template
-----------------------------------------*/
-
-
-/*----------------------------------------
-[Table of contents]
-
-1. Header
-2. Home
-3. Content
-4. Section
-5. Breadcrumb
-6. Card
-7. Details
-8. FAQ
-9. How
-10. Partners
-11. Price
-12. Feature
-13. Catalog
-14. Filter
-15. Paginator
-16. Comments
-17. Reviews
-18. Form
-19.	Gallery
-20. Accordion
-21. Footer
-22. Sign
-23. Page 404
-24. Plyr customization
-25. PhotoSwipe customization
-26. mCustomScrollbar customization
-----------------------------------------*/
-
-
 /*==============================
 	Common styles
 ==============================*/
@@ -553,6 +512,38 @@ ul {
     text-decoration: none;
 }
 
+.Rate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 60px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background-image: -moz-linear-gradient(90deg, #ff55a5 0%, #ff5860 100%);
+    background-image: -webkit-linear-gradient(90deg, #ff55a5 0%, #ff5860 100%);
+    background-image: -ms-linear-gradient(90deg, #ff55a5 0%, #ff5860 100%);
+    background-image: linear-gradient(90deg, #ff55a5 0%, #ff5860 100%);
+    -webkit-box-shadow: 0 0 20px 0 rgba(255, 88, 96, 0.5);
+    box-shadow: 0 0 20px 0 rgba(255, 88, 96, 0.5);
+    opacity: 0.85;
+    margin-left: 20px;
+}
+
+.span {
+    display: none;
+}
+
+.Rate i {
+    color: #fff;
+    font-size: 24px;
+}
+
+.Rate:hover {
+    opacity: 10;
+    text-decoration: none;
+}
+
 .header__btn {
     display: block;
     position: absolute;
@@ -662,6 +653,22 @@ ul {
         font-weight: 500;
         letter-spacing: 1px;
     }
+    .Rate {
+        height: 30px;
+        width: 90px;
+        margin-left: 30px;
+    }
+    .Rate i {
+        display: none;
+    }
+    .Rate span {
+        display: block;
+        font-size: 18px;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 500;
+        letter-spacing: 1px;
+    }
     .header__nav {
         top: 90px;
     }
@@ -675,6 +682,9 @@ ul {
 
 @media (min-width: 1200px) {
     .header__sign-in {
+        margin-left: 45px;
+    }
+    .Rate {
         margin-left: 45px;
     }
     .header__auth {
@@ -1544,7 +1554,7 @@ ul {
 }
 
 .card__rate {
-    font-size: 16px;
+    font-size: 25px;
     font-weight: 500;
     color: #fff;
     position: relative;
@@ -1555,16 +1565,21 @@ ul {
     margin-top: 2px;
 }
 
-.card__rate i {
-    text-shadow: 0 0 6px rgba(255, 88, 96, 0.5);
+.card__rate_act {
+    font-size: 25px;
     margin-right: 5px;
-}
-
-.card__rate i:before {
     background-image: -webkit-linear-gradient(0deg, #ff55a5 0%, #ff5860 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     color: #ff5860;
+}
+
+.card__rate {
+    margin-right: 5px;
+    background-image: -webkit-linear-gradient(0deg, #c09fae 0%, #7a6d6e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #c7a2a4;
 }
 
 .card__list {
@@ -2357,6 +2372,206 @@ ul {
     font-size: 16px;
     color: #fff;
     font-weight: 500;
+}
+
+
+/*==============================
+	Details
+==============================*/
+
+.details {
+    position: relative;
+    margin-top: 70px;
+}
+
+.details__bg {
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 400px;
+    z-index: 1;
+    opacity: 0.07;
+}
+
+.details:before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 400px;
+    z-index: 2;
+    background: -moz-linear-gradient(top, rgba(43, 43, 49, 0) 0%, #2b2b31 100%);
+    background: -webkit-linear-gradient(top, rgba(43, 43, 49, 0) 0%, #2b2b31 100%);
+    background: linear-gradient(to bottom, rgba(43, 43, 49, 0) 0%, #2b2b31 100%);
+}
+
+.details .container {
+    position: relative;
+    z-index: 3;
+}
+
+.details__title {
+    color: #fff;
+    font-weight: 300;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.details__title b {
+    font-weight: 700;
+}
+
+.details__wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.details__devices {
+    margin-top: 30px;
+}
+
+.details__devices-title {
+    font-size: 14px;
+    display: block;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: 'Open Sans', sans-serif;
+}
+
+.details__devices-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.details__devices-list li {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 20px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.details__devices-list li:last-child {
+    margin-right: 0;
+}
+
+.details__devices-list li i {
+    font-size: 40px;
+}
+
+.details__devices-list li i:before {
+    background-image: -webkit-linear-gradient(0deg, #ff55a5 0%, #ff5860 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #ff5860;
+}
+
+.details__devices-list li span {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.details__share {
+    margin-top: 30px;
+}
+
+.details__share-title {
+    font-size: 14px;
+    display: block;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 5px;
+}
+
+.details__share-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.details__share-list li {
+    margin-right: 20px;
+}
+
+.details__share-list li:last-child {
+    margin-right: 0;
+}
+
+.details__share-list li i {
+    font-size: 24px;
+}
+
+.details__share-list li.facebook a {
+    color: #3b5999;
+}
+
+.details__share-list li.instagram a {
+    color: #ff5860;
+}
+
+.details__share-list li.instagram a i:before {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #ff5860;
+}
+
+.details__share-list li.twitter a {
+    color: #1da1f2;
+}
+
+.details__share-list li.vk a {
+    color: #45668e;
+}
+
+@media (min-width: 576px) {
+    .details__title {
+        font-size: 30px;
+    }
+}
+
+@media (min-width: 768px) {
+    .details {
+        margin-top: 90px;
+    }
+    .details__title {
+        font-size: 32px;
+    }
+    .details__wrap {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-top: 30px;
+    }
+    .details__share,
+    .details__devices {
+        margin-top: 0;
+    }
+}
+
+@media (min-width: 992px) {
+    .details__title {
+        line-height: 100%;
+        margin-bottom: 30px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .details {
+        padding: 70px 0;
+    }
+    .details__title {
+        font-size: 36px;
+    }
 }
 
 

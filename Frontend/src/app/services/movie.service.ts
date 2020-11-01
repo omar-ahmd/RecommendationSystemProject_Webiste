@@ -14,7 +14,7 @@ export class MovieService {
             rating: 5,
             Releaseyear:"",
             Runningtime:"",
-            Country:"",
+            Language:"",
         },
         {
             id: "2",
@@ -26,7 +26,7 @@ export class MovieService {
             rating: 5,
             Releaseyear:"",
             Runningtime:"",
-            Country:"",
+            Language:"",
         },
         {
             id: "3",
@@ -38,7 +38,7 @@ export class MovieService {
             rating: 5,
             Releaseyear:"",
             Runningtime:"",
-            Country:"",
+            Language:"",
         },
         {
             id: "4",
@@ -50,7 +50,7 @@ export class MovieService {
             rating: 5,
             Releaseyear:"",
             Runningtime:"",
-            Country:"",
+            Language:"",
         },
         {
             id: "5",
@@ -62,7 +62,7 @@ export class MovieService {
             rating: 5,
             Releaseyear:"",
             Runningtime:"",
-            Country:"",
+            Language:"",
         },
         {
             id: "6",
@@ -74,7 +74,7 @@ export class MovieService {
             rating: 5,
             Releaseyear:"",
             Runningtime:"",
-            Country:"",
+            Language:"",
         },
     ]
     
@@ -93,18 +93,16 @@ export class MovieService {
     public getNewMovies(){
 
     }
-    public getNewCartons(){
 
-    }
-    public getNews(){
 
-    }
     public TopRatedMovies(){
 
     }
+
     public getMovies(){
         return this.movie;
     }
+    
     public getMovie(id){
         return this.movie[id=id-1]
     }

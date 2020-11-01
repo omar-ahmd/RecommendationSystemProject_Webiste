@@ -1,10 +1,8 @@
 <section class="section details">
-    <!-- details background -->
-    <div class="details__bg" data-bg="img/home/home__bg.jpg"></div>
-    <!-- end details background -->
 
+    <div style="height: 70px;"></div>
     <!-- details content -->
-    <div class="container">
+    <div class="container" style="margin-bottom: 50px;">
         <div class="row">
             <!-- title -->
             <div class="col-12">
@@ -27,8 +25,21 @@
                         <!-- card content -->
                         <div class="col-12 col-sm-8 col-md-8 col-lg-9 col-xl-7">
                             <div class="card__content">
-                                <div class="card__wrap">
-                                    <span class="card__rate"><i class="icon ion-ios-star"></i>{{movie.rating}}</span>
+                                <div *ngIf="LoggedIn" class="card__wrap">
+                                    <span class="card__rate" id="star1" (click)="starclick(1)" (mouseenter)="starhover(1)" (mouseleave)="starleave()"><i class="icon ion-ios-star"></i></span>
+                                    <span class="card__rate" id="star2" (click)="starclick(2)" (mouseenter)="starhover(2)" (mouseleave)="starleave()"><i  class="icon ion-ios-star"></i></span>
+                                    <span class="card__rate" id="star3" (click)="starclick(3)" (mouseenter)="starhover(3)" (mouseleave)="starleave()"><i  class="icon ion-ios-star"></i></span>
+                                    <span class="card__rate" id="star4" (click)="starclick(4)" (mouseenter)="starhover(4)" (mouseleave)="starleave()"><i  class="icon ion-ios-star"></i></span>
+                                    <span class="card__rate" id="star5" (click)="starclick(5)" (mouseenter)="starhover(5)" (mouseleave)="starleave()"><i  class="icon ion-ios-star"></i></span>
+
+                                    <a href="account/login " class="Rate">
+                                        <i class="icon ion-md-checkmark"></i>
+                                        <span class="span">Rate</span>
+                                    </a>
+                                </div>
+                                <div class="card__wrap" style="margin-top:10px;">
+                                    <span class="card__rate_act">
+                                        Rated {{movie.rating}} <i class="icon ion-ios-star"></i> </span>
 
                                 </div>
 
@@ -36,7 +47,6 @@
                                     <li>
                                         <span>Genre:</span>
                                         <span class="card__category">
-                                            <a *ngFor="let cat of movie.category" href="#">{{cat}}</a>
                                             
                                         </span>
                                     </li>
@@ -72,13 +82,108 @@
             </div>
             <!-- end content -->
 
-
-
-
         </div>
     </div>
 
+    <section class="content">
+        <div class="content__head">
+            <div class="container">
+                <div class="row">
+                    <!-- section title -->
+                    <div class="col-12" style="margin-top: 50px;">
+                        <h2 class="section__title">You may also like...</h2>
+                    </div>
+                    <!-- end section title -->
 
-    <!-- end details content -->
+
+                    <!-- card -->
+                    <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+                        <div class="card">
+                            <div class="card__cover">
+                                <img src="../../../assets/img/covers/cover2.jpg" alt="">
+                                <a href="#" class="card__play">
+                                    <i class="icon ion-ios-play"></i>
+                                </a>
+                            </div>
+                            <div class="card__content">
+                                <h3 class="card__title"><a href="#">mov.title</a></h3>
+                                <span class="card__category">
+                                
+                            </span>
+                                <span class="card__rate"><i class="icon ion-ios-star"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end card -->
+
+                    <!-- card -->
+                    <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+                        <div class="card">
+                            <div class="card__cover">
+                                <img src="../../../assets/img/covers/cover2.jpg" alt="">
+                                <a href="#" class="card__play">
+                                    <i class="icon ion-ios-play"></i>
+                                </a>
+                            </div>
+                            <div class="card__content">
+                                <h3 class="card__title"><a href="#">mov.title</a></h3>
+                                <span class="card__category">
+                                
+                            </span>
+                                <span class="card__rate"><i class="icon ion-ios-star"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end card -->
+
+                    <!-- card -->
+                    <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+                        <div class="card">
+                            <div class="card__cover">
+                                <img src="../../../assets/img/covers/cover2.jpg" alt="">
+                                <a href="#" class="card__play">
+                                    <i class="icon ion-ios-play"></i>
+                                </a>
+                            </div>
+                            <div class="card__content">
+                                <h3 class="card__title"><a href="#">mov.title</a></h3>
+                                <span class="card__category">
+                                
+                            </span>
+                                <span class="card__rate"><i class="icon ion-ios-star"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end card -->
+
+                    <!-- card -->
+                    <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+                        <div class="card">
+                            <div class="card__cover">
+                                <img src="../../../assets/img/covers/cover2.jpg" alt="">
+                                <a href="#" class="card__play">
+                                    <i class="icon ion-ios-play"></i>
+                                </a>
+                            </div>
+                            <div class="card__content">
+                                <h3 class="card__title"><a href="#">mov.title</a></h3>
+                                <span class="card__category">
+                                
+                            </span>
+                                <span class="card__rate"><i class="icon ion-ios-star"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end card -->
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
 </section>
 <!-- end details -->

@@ -7,6 +7,6 @@ export class Movie {
     rating: number;
     Releaseyear:string="";
     Runningtime:string="";
-    Country:string="";
+    Language:string="";
 
 }
