@@ -10,6 +10,8 @@ urlpatterns = [
 
 router = routers.DefaultRouter()
 router.register(r'movies', views.MovieViewSet)
+router.register(r'users', views.UsersViewSet)
+router.register(r'rating', views.UserMovieRatingViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
