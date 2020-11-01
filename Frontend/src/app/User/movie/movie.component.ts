@@ -12,12 +12,8 @@ import { AuthService } from 'src/app/services/auth.service';
     '../userlayout.component.css',
     '../css/bootstrap-grid.min.css',
     '../css/bootstrap-reboot.min.css',
-    "../css/jquery.mCustomScrollbar.min.css"
-    ,"../css/nouislider.min.css",
     "../css/ionicons.min.css",
-    "../css/plyr.css",
-    "../css/photoswipe.css",
-    "../css/default-skin.css"
+   
 
   ]
 })
