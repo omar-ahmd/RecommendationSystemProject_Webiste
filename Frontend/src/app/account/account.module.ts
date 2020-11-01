@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule, registerLocaleData } from '@angular/common';
 
 import { AccountRoutingModule } from './account-routing.module';
@@ -13,6 +13,7 @@ import { RegisterComponent } from './Register/register.component';
         CommonModule,
         ReactiveFormsModule,
         AccountRoutingModule,
+        FormsModule
         
     ],
     declarations: [

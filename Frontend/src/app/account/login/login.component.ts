@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { login } from 'src/app/models/user';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,9 +16,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _router : Router) { }
+  
+  User={email:"",password:""};
 
   ngOnInit(): void {
   }
+
+  loginUser () {
+ 
+    localStorage.setItem('token', "omarahmad")
+    this._router.navigate(['./Main/movie'])
+
+
+  }
+
 
 }

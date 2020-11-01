@@ -1,5 +1,6 @@
 ﻿import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 
 
@@ -16,12 +17,15 @@ import { Router } from '@angular/router';
 export class UserlayoutComponent {
     constructor(
         private router: Router,
-        
+        private authservice : AuthService
     ) { 
+        this.LoggedIn = authservice.loggedIn();
     }
-
+    LoggedIn:boolean=false;
     MenuBtn:boolean=false;
     SearchBtn:boolean=false;
+
+
     MenuClick(){
         if(!this.MenuBtn){
             if(this.SearchBtn)this.SearchBtn=false;
@@ -34,5 +38,9 @@ export class UserlayoutComponent {
             if(this.MenuBtn)this.MenuBtn=false;
         }
         this.SearchBtn=!this.SearchBtn;
+    }
+
+    SignOut(){
+        this.authservice.logoutUser()
     }
 }

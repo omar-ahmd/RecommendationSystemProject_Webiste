@@ -8,13 +8,17 @@ import { RegisterComponent } from './Register/register.component';
 
 
 const routes: Routes = [
-    {
-        path: '', component: LayoutComponent,
-        children: [
-            { path: 'login', component: LoginComponent },
-            { path: 'register', component: RegisterComponent },
-        ]
-    }
+    
+        {
+            path: '', component: LayoutComponent,
+            children: [
+                { path: '', component: LoginComponent },
+                { path: 'login', component: LoginComponent },
+                { path: 'register', component: RegisterComponent },
+                { path: '**', redirectTo: '../Main/movie' }
+            ]},
+        
+    
 ];
 
 @NgModule({

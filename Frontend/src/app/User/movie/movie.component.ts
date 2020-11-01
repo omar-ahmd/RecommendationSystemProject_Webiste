@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlCarousel } from 'ngx-owl-carousel'
 import { nextTick } from 'process';
+import { MovieService } from 'src/app/services/movie.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-movie',
   templateUrl: './movie.component.html',
@@ -20,9 +23,21 @@ import { nextTick } from 'process';
 })
 export class MovieComponent implements OnInit {
 
-  constructor() { }
+  constructor(movies : MovieService,private route:ActivatedRoute,private router:Router,authservice : AuthService) { 
+    if(authservice.loggedIn()){
+      this.movie = movies.getMovies()
+    }
+    else{
+      
+    }
+    
+  
+  }
+
+  movie: any[]
 
   ngOnInit(): void {
+    
   }
 
   customOptions={
@@ -31,7 +46,7 @@ export class MovieComponent implements OnInit {
    
     
     dots: false,
-    loop: true,
+    loop: false,
     autoplay: false,
     smartSpeed: 600,
     margin: 30,
@@ -54,12 +69,13 @@ export class MovieComponent implements OnInit {
     
   }
 
-  Prev(){
-     
-  }
-  Forw(){
+  tabclick(event){
     
-
+    var target = event.target || event.srcElement || event.currentTarget;
+    console.log(target.text)
+  }
+  Select(idd){
+    this.router.navigate(['./Main/movie',idd])
   }
   
   
