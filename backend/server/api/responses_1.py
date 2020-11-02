@@ -5,9 +5,9 @@ import json
 
 def getBygenres(genre):
     movies_cleaned_df = pd.read_csv(
-        "D:\\Internship\\TEC\\Project\\backend\\Movies.csv")
+        "D:\\Internship\\TEC\\Project\\backend\\Movies_Dataset.csv")
     movies_cleaned_df = movies_cleaned_df.drop(
-        columns=['Unnamed: 0', 'Output', 'keywords', 'popularity', 'production_companies'])
+        columns=['Unnamed: 0', 'Output', 'keywords', 'runtime', 'production_companies', 'imdb_id'])
     res = movies_cleaned_df[movies_cleaned_df['genres'].str.contains(
         genre, na=False)]
     result = res.to_json(orient="records")
@@ -17,9 +17,9 @@ def getBygenres(genre):
 
 def getByyear(year):
     movies_cleaned_df = pd.read_csv(
-        "D:\\Internship\\TEC\\Project\\backend\\Movies.csv")
+        "D:\\Internship\\TEC\\Project\\backend\\Movies_Dataset.csv")
     movies_cleaned_df = movies_cleaned_df.drop(
-        columns=['Unnamed: 0', 'Output', 'keywords', 'popularity', 'production_companies'])
+        columns=['Unnamed: 0', 'Output', 'keywords', 'runtime', 'production_companies', 'imdb_id'])
     res = movies_cleaned_df[movies_cleaned_df['release_date'].str.contains(
         year, na=False)]
     result = res.to_json(orient="records")
@@ -29,13 +29,40 @@ def getByyear(year):
 
 def getByrating(rating):
     movies_cleaned_df = pd.read_csv(
-        "D:\\Internship\\TEC\\Project\\backend\\Movies.csv")
+        "D:\\Internship\\TEC\\Project\\backend\\Movies_Dataset.csv")
     movies_cleaned_df = movies_cleaned_df.drop(
-        columns=['Unnamed: 0', 'Output', 'keywords', 'popularity', 'production_companies'])
+        columns=['Unnamed: 0', 'Output', 'keywords', 'runtime', 'production_companies', 'imdb_id'])
     res = movies_cleaned_df[movies_cleaned_df['vote_average'].astype(
         str).str[0] == rating[0]]
     result = res.to_json(orient="records")
     parsed = json.loads(result)
     return parsed
+
+
+def getByVotes():
+    movies_cleaned_df = pd.read_csv(
+        "D:\\Internship\\TEC\\Project\\backend\\Movies_Dataset.csv")
+    movies_cleaned_df = movies_cleaned_df.drop(
+        columns=['Unnamed: 0', 'Output', 'keywords', 'runtime', 'production_companies', 'imdb_id'])
+    movies_sortvote_df = movies_cleaned_df.sort_values(
+        by=['vote_average', 'vote_count'], ascending=False)[movies_cleaned_df['vote_count'] > 100]
+    res = movies_sortvote_df[:20]
+    result = res.to_json(orient="records")
+    parsed = json.loads(result)
+    return parsed
+
+
+def getByPopularity():
+    movies_cleaned_df = pd.read_csv(
+        "D:\\Internship\\TEC\\Project\\backend\\Movies_Dataset.csv")
+    movies_cleaned_df = movies_cleaned_df.drop(
+        columns=['Unnamed: 0', 'Output', 'keywords', 'runtime', 'production_companies', 'imdb_id'])
+    movies_sortpopularity_df = movies_cleaned_df.sort_values(
+        by=['popularity'], ascending=False)
+    res = movies_sortpopularity_df[:20]
+    result = res.to_json(orient="records")
+    parsed = json.loads(result)
+    return parsed
+
 
 # movies_cleaned_df.original_language.unique()

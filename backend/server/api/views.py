@@ -5,7 +5,7 @@ from .serializers import MovieSerializer, UsersSerializer, UserMovieRatingSerial
 from .models import Movie, Users, UserMovieRating
 from django.http import JsonResponse
 from .recommendation import getRecommendations
-from .responses_1 import getBygenres, getByyear, getByrating
+from .responses_1 import getBygenres, getByyear, getByrating, getByVotes, getByPopularity
 from django.views.decorators.csrf import csrf_exempt
 import json
 #from rest_framework import permissions
@@ -64,4 +64,18 @@ def RecommendationsMovieByRating(request):
     body_data = json.loads(body_unicode)
     rating = body_data['rating']
     res = getByrating(rating)
+    return JsonResponse({'Movies': res})
+
+
+@csrf_exempt
+@api_view(['GET'])
+def RecommendationsMovieByVote(request):
+    res = getByVotes()
+    return JsonResponse({'Movies': res})
+
+
+@csrf_exempt
+@api_view(['GET'])
+def RecommendationsMovieByPopularity(request):
+    res = getByPopularity()
     return JsonResponse({'Movies': res})

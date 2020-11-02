@@ -9,15 +9,18 @@ from sklearn.metrics.pairwise import sigmoid_kernel
 
 def getRecommendations(title):
     movies_cleaned_df = pd.read_csv(
-        "D:\\Internship\\TEC\\Project\\backend\\Movies.csv")
-    my_additional_stop_words = ['id', 'name', 'poster_path',
-                                'backdrop_path', 'credit_id', 'profile_path', 'order', 'gender']
-    stop_wordss = text.ENGLISH_STOP_WORDS.union(my_additional_stop_words)
+        "D:\\Internship\\TEC\\Project\\backend\\Movies_Dataset.csv")
+    movies_cleaned_df = movies_cleaned_df.drop(
+        columns=['Unnamed: 0', 'keywords', 'runtime', 'production_companies', 'imdb_id'])
 
     # tfv = TfidfVectorizer(min_df=3,  max_features=None,
     #                      strip_accents='unicode', analyzer='word', token_pattern=r'\w{1,}',
     #                      ngram_range=(1, 3),
     #                      stop_words=stop_wordss)
+    my_additional_stop_words = ['id', 'name', 'poster_path',
+                                'backdrop_path', 'credit_id', 'profile_path', 'order', 'gender']
+
+    stop_wordss = text.ENGLISH_STOP_WORDS.union(my_additional_stop_words)
 
     cv = CountVectorizer(lowercase=True, min_df=3,  max_features=None,
                          strip_accents='unicode', analyzer='word', token_pattern=r'\w{1,}',
@@ -55,13 +58,13 @@ def getRecommendations(title):
         movie_indices = [i[0] for i in sig_scores]
 
         # Top 10 most similar movies
-        return movies_cleaned_df[['imdb_id', 'original_title']].iloc[movie_indices]
+        return movies_cleaned_df.iloc[movie_indices]
 
     # Testing our content-based recommendation system with the seminal film Spy Kids
     #movies = give_rec(title=title, sig=sig)
     cvmovies = give_rec(title=title, sig=sig2)
-    posters_path = movies_cleaned_df.loc[movies_cleaned_df['imdb_id'].isin(
-        cvmovies['imdb_id'])]
+    cvmovies = cvmovies.drop(
+        columns=['Output'])
     # print(movies)
     # print(cvmovies)
 

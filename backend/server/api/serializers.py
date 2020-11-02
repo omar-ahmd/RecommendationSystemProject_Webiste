@@ -13,7 +13,20 @@ class MovieSerializer(serializers.HyperlinkedModelSerializer):
 class UsersSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Users
-        fields = ['id', 'first_name', 'last_name', 'email', 'password']
+        extra_kwargs = {'password': {'write_only': True}}
+        fields = ['id', 'username', 'email', 'password']
+
+    # def create(self, validated_data):
+    #     """Create and return a new user."""
+
+    #     user = models.User(
+    #         email=validated_data['first_name'],
+    #         firstname=validated_data['last_name'],
+    #         lastname=validated_data['email']
+    #     )
+    #     user.set_password(validated_data['password'])
+    #     user.save()
+    #     return user
 
 
 class UserMovieRatingSerializer(serializers.HyperlinkedModelSerializer):

@@ -21,4 +21,8 @@ urlpatterns = [
          name="year"),
     path('api/rating/', views.RecommendationsMovieByRating,
          name="rating"),
+    path('api/vote/', views.RecommendationsMovieByVote,
+         name="vote"),
+    path('api/popularity/', views.RecommendationsMovieByPopularity,
+         name="popularity"),
 ]
