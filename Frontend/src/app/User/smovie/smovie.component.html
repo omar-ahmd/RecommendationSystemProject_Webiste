@@ -26,20 +26,25 @@
                         <div class="col-12 col-sm-8 col-md-8 col-lg-9 col-xl-7">
                             <div class="card__content">
                                 <div *ngIf="LoggedIn" class="card__wrap">
-                                    <span class="card__rate" id="star1" (click)="starclick(1)" (mouseenter)="starhover(1)" (mouseleave)="starleave()"><i class="icon ion-ios-star"></i></span>
-                                    <span class="card__rate" id="star2" (click)="starclick(2)" (mouseenter)="starhover(2)" (mouseleave)="starleave()"><i  class="icon ion-ios-star"></i></span>
-                                    <span class="card__rate" id="star3" (click)="starclick(3)" (mouseenter)="starhover(3)" (mouseleave)="starleave()"><i  class="icon ion-ios-star"></i></span>
-                                    <span class="card__rate" id="star4" (click)="starclick(4)" (mouseenter)="starhover(4)" (mouseleave)="starleave()"><i  class="icon ion-ios-star"></i></span>
-                                    <span class="card__rate" id="star5" (click)="starclick(5)" (mouseenter)="starhover(5)" (mouseleave)="starleave()"><i  class="icon ion-ios-star"></i></span>
+                                    <span class="card__rate1" id="star1" (click)="starclick(1)" (mouseenter)="starhover(1)" (mouseleave)="starleave()"><i class="icon ion-ios-star"></i></span>
+                                    <span class="card__rate1" id="star2" (click)="starclick(2)" (mouseenter)="starhover(2)" (mouseleave)="starleave()"><i  class="icon ion-ios-star"></i></span>
+                                    <span class="card__rate1" id="star3" (click)="starclick(3)" (mouseenter)="starhover(3)" (mouseleave)="starleave()"><i  class="icon ion-ios-star"></i></span>
+                                    <span class="card__rate1" id="star4" (click)="starclick(4)" (mouseenter)="starhover(4)" (mouseleave)="starleave()"><i  class="icon ion-ios-star"></i></span>
+                                    <span class="card__rate1" id="star5" (click)="starclick(5)" (mouseenter)="starhover(5)" (mouseleave)="starleave()"><i  class="icon ion-ios-star"></i></span>
 
                                     <a href="account/login " class="Rate">
                                         <i class="icon ion-md-checkmark"></i>
                                         <span class="span">Rate</span>
                                     </a>
                                 </div>
-                                <div class="card__wrap" style="margin-top:10px;">
-                                    <span class="card__rate_act">
+                                <div *ngIf="LoggedIn" class="card__wrap" style="margin-top:10px;">
+                                    <span class="card__rate_act1">
                                         Rated {{movie.rating}} <i class="icon ion-ios-star"></i> </span>
+
+                                </div>
+
+                                <div class="card__wrap">
+                                    <span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
 
                                 </div>
 
@@ -110,7 +115,7 @@
                                 <span class="card__category">
                                 
                             </span>
-                                <span class="card__rate"><i class="icon ion-ios-star"></i></span>
+                                <span class="card__rate"><i class="icon ion-ios-star"></i>{{mov.rating}}</span>
                             </div>
                         </div>
                     </div>

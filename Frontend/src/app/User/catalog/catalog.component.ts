@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MovieService } from 'src/app/services/movie.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-catalog',
@@ -16,10 +18,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CatalogComponent implements OnInit {
 
-  constructor() { }
+  constructor(private movieservice:MovieService,private router:Router) { }
+  Genres:any[];
   Genre:string="Action/Adventure";
   Rating:string="4-5"
   Releaseyear:string="2020";
+  FilteredMovies:any[]
+  num:any;
+  numA:Array<any>=[]
   ClickGenre(event){
     this.Genre = event.path[0].innerHTML 
   }
@@ -31,10 +37,23 @@ export class CatalogComponent implements OnInit {
   }
 
   ApplyFilter(){
+    this.FilteredMovies = this.movieservice.getFilteredMovie(this.Genre,this.Rating,this.Releaseyear)
     
   }
   ngOnInit(): void {
-    
+    this.Genres = this.movieservice.getGenres()
+    this.FilteredMovies = this.movieservice.getFilteredMovie(this.Genre,this.Rating,this.Releaseyear)
+    this.num = Math.ceil(this.Genres.length/6)
+    for (var index = 1; index <= this.num; index++) {
+      this.numA.push(index)
+      
+    }
+    console.log(this.numA)
+    document.getElementById("1").classList.add("paginator__item--active")
+
+  }
+  pagClick(event){
+    console.log(event)
   }
 
 

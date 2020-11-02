@@ -71,11 +71,14 @@
                         <ul class="nav nav-tabs content__tabs" id="content__tabs" role="tablist">
 
                             <li class="nav-item" (click)="TopMovies()">
-                                <a class="nav-link active" data-toggle="tab" href="#" (click)="tabclick($event)" role="tab" aria-controls="tab-2" aria-selected="false">Top Movies</a>
+                                <a class="nav-link active" data-toggle="tab" href="#" role="tab" aria-controls="tab-2" aria-selected="false">Top Movies</a>
+                            </li>
+                            <li class="nav-item" (click)="TopPopular()">
+                                <a class="nav-link" data-toggle="tab" href="#" role="tab" aria-controls="tab-2" aria-selected="false">Popular</a>
                             </li>
 
                             <li *ngIf="LoggedIn" class="nav-item" (click)="Recomnended()">
-                                <a class="nav-link" data-toggle="tab" href="#" (click)="tabclick($event)" role="tab" aria-controls="tab-2" aria-selected="false">Recommened For you</a>
+                                <a class="nav-link" data-toggle="tab" href="#" role="tab" aria-controls="tab-2" aria-selected="false">Recommened For you</a>
                             </li>
 
 
@@ -92,7 +95,7 @@
 
                             <div class="content__mobile-tabs-menu dropdown-menu" aria-labelledby="mobile-tabs">
                                 <ul class="nav nav-tabs" role="tablist">
-                                    <li class="nav-item"><a class="nav-link active" id="2-tab" data-toggle="tab" (click)="tabclick($event)" role="tab" aria-controls="tab-2" aria-selected="false">MOVIES</a></li>
+                                    <li class="nav-item"><a class="nav-link active" id="2-tab" data-toggle="tab" role="tab" aria-controls="tab-2" aria-selected="false">MOVIES</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -111,7 +114,7 @@
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="tab-1" role="tabpanel">
 
-                    <div *ngIf="toprated" class="row">
+                    <div *ngIf="TopRated" class="row">
 
                         <!-- card -->
                         <div *ngFor="let mov of Toprated" class="col-6 col-sm-12 col-lg-6">
@@ -151,11 +154,11 @@
                         <!-- end card -->
                     </div>
 
-                    <div *ngIf="!toprated" class="row">
+                    <div *ngIf="Popular" class="row">
 
 
                         <!-- card -->
-                        <div *ngFor="let mov of Toprated" class="col-6 col-sm-12 col-lg-6">
+                        <div *ngFor="let mov of Toppopular" class="col-6 col-sm-12 col-lg-6">
                             <div class="card card--list">
                                 <div class="row">
                                     <div class="col-12 col-sm-4">
@@ -192,6 +195,46 @@
                         <!-- end card -->
                     </div>
 
+                    <div *ngIf="TopRecommended" class="row">
+
+
+                        <!-- card -->
+                        <div *ngFor="let mov of Recommended" class="col-6 col-sm-12 col-lg-6">
+                            <div class="card card--list">
+                                <div class="row">
+                                    <div class="col-12 col-sm-4">
+                                        <div class="card__cover">
+                                            <img src="{{mov.url}}" alt="">
+                                            <a href="#" class="card__play">
+                                                <i class="icon ion-ios-play"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-sm-8">
+                                        <div class="card__content">
+                                            <h3 class="card__title"><a href="#">{{mov.title}}</a></h3>
+                                            <span class="card__category">
+                                                <a *ngFor="let cat of mov.category" href="#">{{cat}}</a>
+                                                
+                                            </span>
+
+                                            <div class="card__wrap">
+                                                <span class="card__rate"><i class="icon ion-ios-star"></i>{{mov.rating}}</span>
+
+
+                                            </div>
+
+                                            <div class="card__description">
+                                                <p>{{mov.description}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end card -->
+                    </div>
 
 
                 </div>

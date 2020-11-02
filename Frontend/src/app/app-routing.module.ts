@@ -6,7 +6,7 @@ const userModule = () => import('./User/user.module').then(x => x.UserModule);
 const routes: Routes = [
 { path: 'account', loadChildren: accountModule },
 { path: 'Main', loadChildren: userModule },
-{ path: '**',redirectTo:'account' },];
+{ path: '**',redirectTo:'Main/movie' },];
 @NgModule({
   imports: [
     RouterModule.forRoot(routes)

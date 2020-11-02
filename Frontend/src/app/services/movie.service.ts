@@ -77,11 +77,36 @@ export class MovieService {
             Language:"",
         },
     ]
+     
+    public Genre=[  'Crime',
+                    'History',
+                    'Adventure',
+                    'Family',
+                    'Animation',
+                    'War',
+                    'Documentary',
+                    'Horror',
+                    'Foreign',
+                    'Romance',
+                    'Mystery',
+                    'Thriller',
+                    'Western',
+                    'Action',
+                    'Drama',
+                    'Fantasy',
+                    'Science Fiction',
+                    'Music',
+                    'TV Movie',
+                    'Comedy']
+
     
-    constructor(
+    constructor() {
         
-    ) {
-        
+    }
+
+    public getGenres(){
+        return this.Genre
+
     }
 
     public getRecommendedMovies(){
@@ -99,6 +124,9 @@ export class MovieService {
     public getNewMovies(){
         return this.movie;
 
+    }
+    public PopularMovies(){
+        return this.movie;
     }
 
 

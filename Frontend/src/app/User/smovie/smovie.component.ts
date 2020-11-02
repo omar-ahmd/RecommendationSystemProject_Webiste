@@ -39,7 +39,7 @@ export class SmovieComponent implements OnInit {
     this.clicked=false;
     for (let index = 1; index <= star; index++) {
       var s="star"+index;
-      document.getElementById(s).className="card__rate_act"
+      document.getElementById(s).className="card__rate_act1"
       
     }
   }
@@ -48,7 +48,7 @@ export class SmovieComponent implements OnInit {
     if(!this.clicked){
     for (let index = 1; index <= 5; index++) {
       var s="star"+index;
-      document.getElementById(s).className="card__rate"
+      document.getElementById(s).className="card__rate1"
       
     }
   }
@@ -56,7 +56,7 @@ export class SmovieComponent implements OnInit {
   starclick(n){
     for (let index = 1; index <= n; index++) {
       var s="star"+index;
-      document.getElementById(s).className="card__rate_act"
+      document.getElementById(s).className="card__rate_act1"
       
     }
     this.clicked=true;

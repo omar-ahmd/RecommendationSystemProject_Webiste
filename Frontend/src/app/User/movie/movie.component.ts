@@ -23,17 +23,20 @@ export class MovieComponent implements OnInit {
     this.LoggedIn=this.authservice.loggedIn()
 
   }
-  toprated:boolean=true;
+  TopRecommended:boolean=false;
+  TopRated:boolean=true;
+  Popular:boolean=false;
   LoggedIn:boolean=false;
   NewMovie: any[]
   Toprated: any[]
   Recommended: any[]
+  Toppopular:any[]
   Other:any[]
   ngOnInit(): void {
 
     this.NewMovie = this.movieservice.getNewMovies()
     this.Toprated = this.movieservice.TopRatedMovies()
-    
+    this.Toppopular = this.movieservice.PopularMovies()
     this.Other = this.movieservice.getMovies();
     
     if(this.LoggedIn){
@@ -73,26 +76,33 @@ export class MovieComponent implements OnInit {
     
   }
 
-  tabclick(event){
-    var target = event.target || event.srcElement || event.currentTarget;
-    console.log(target.text)
-  }
+
   Select(idd){
     this.router.navigate(['./Main/movie',idd])
   }
 
 
   TopMovies(){
-    if(!this.toprated){
-      this.toprated = true;
-      this.router.navigate(['./Main/movie'])
+    if(!this.TopRated){
+      this.TopRated = true;
+      this.TopRecommended = false;
+      this.Popular = false;
       
     }
   }
   Recomnended(){
-    if(this.toprated){
-      this.toprated = false;
-      this.router.navigate(['./Main/movie'])
+    if(!this.TopRecommended){
+      this.TopRated = false;
+      this.TopRecommended = true;
+      this.Popular = false;
+    }
+
+  }
+  TopPopular(){
+    if(!this.Popular){
+      this.TopRated = false;
+      this.TopRecommended = false;
+      this.Popular = true
     }
 
   }

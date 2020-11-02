@@ -39,8 +39,7 @@
 
                             <ul class="filter__item-menu dropdown-menu scrollbar-dropdown" aria-labelledby="filter-genre">
                                 <perfect-scrollbar style="height: 150px;">
-                                    <li (click)="ClickGenre($event)">Action/Adventure</li>
-                                    <li (click)="ClickGenre($event)">omar</li>
+                                    <li *ngFor="let genre of Genres" (click)="ClickGenre($event)">{{genre}}</li>
                                 </perfect-scrollbar>
                             </ul>
 
@@ -95,7 +94,7 @@
                     </div>
 
                     <!-- filter btn -->
-                    <button class="filter__btn" type="button" (click)="ApplyFilter">apply filter</button>
+                    <button class="filter__btn" type="button" (click)="ApplyFilter()">apply filter</button>
                     <!-- end filter btn -->
 
 
@@ -111,21 +110,20 @@
     <div class="container">
         <div class="row">
             <!-- card -->
-            <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+            <div *ngFor="let mov of FilteredMovies" class="col-6 col-sm-4 col-lg-3 col-xl-2">
                 <div class="card">
                     <div class="card__cover">
-                        <img src="img/covers/cover.jpg" alt="">
+                        <img src="{{mov.url}}" alt="">
                         <a href="#" class="card__play">
                             <i class="icon ion-ios-play"></i>
                         </a>
                     </div>
                     <div class="card__content">
-                        <h3 class="card__title"><a href="#">I Dream in Another Language</a></h3>
+                        <h3 class="card__title"><a href="#">{{mov.title}}</a></h3>
                         <span class="card__category">
-								<a href="#">Action</a>
-								<a href="#">Triler</a>
+								<a *ngFor="let cat of mov.category" href="#">{{cat}}</a>
 							</span>
-                        <span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
+                        <span class="card__rate"> {{mov.rating}} &nbsp;&nbsp;&nbsp;<i class="icon ion-ios-star"></i></span>
                     </div>
                 </div>
             </div>
@@ -137,10 +135,12 @@
                     <li class="paginator__item paginator__item--prev">
                         <a href="#"><i class="icon ion-ios-arrow-back"></i></a>
                     </li>
-                    <li class="paginator__item"><a href="#">1</a></li>
-                    <li class="paginator__item paginator__item--active"><a href="#">2</a></li>
-                    <li class="paginator__item"><a href="#">3</a></li>
-                    <li class="paginator__item"><a href="#">4</a></li>
+
+                    <li id="1" class="paginator__item"><a href="#">1</a></li>
+                    <li id="2" class="paginator__item"><a href="#">2</a></li>
+                    <li id="3" class="paginator__item"><a href="#">3</a></li>
+                    <li id="4" class="paginator__item"><a href="#">4</a></li>
+
                     <li class="paginator__item paginator__item--next">
                         <a href="#"><i class="icon ion-ios-arrow-forward"></i></a>
                     </li>
