@@ -19,24 +19,28 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class MovieComponent implements OnInit {
 
-  constructor(movies : MovieService,private route:ActivatedRoute,private router:Router,private authservice : AuthService) { 
+  constructor(movies : MovieService,private route:ActivatedRoute,private router:Router,private authservice : AuthService,private movieservice:MovieService) { 
     this.LoggedIn=this.authservice.loggedIn()
-    if(this.LoggedIn){
-      this.NewMovie = movies.getMovies()
-    }
-    else{
-      
-    }
-    
-  
+
   }
+  toprated:boolean=true;
   LoggedIn:boolean=false;
   NewMovie: any[]
   Toprated: any[]
   Recommended: any[]
   Other:any[]
   ngOnInit(): void {
+
+    this.NewMovie = this.movieservice.getNewMovies()
+    this.Toprated = this.movieservice.TopRatedMovies()
     
+    this.Other = this.movieservice.getMovies();
+    
+    if(this.LoggedIn){
+      this.Recommended = this.movieservice.getRecommendedMovies()
+    }
+
+   
 
   }
 
@@ -70,17 +74,26 @@ export class MovieComponent implements OnInit {
   }
 
   tabclick(event){
-    
     var target = event.target || event.srcElement || event.currentTarget;
     console.log(target.text)
   }
   Select(idd){
     this.router.navigate(['./Main/movie',idd])
   }
-  TopMovies(){
 
+
+  TopMovies(){
+    if(!this.toprated){
+      this.toprated = true;
+      this.router.navigate(['./Main/movie'])
+      
+    }
   }
-  Reccomnended(){
+  Recomnended(){
+    if(this.toprated){
+      this.toprated = false;
+      this.router.navigate(['./Main/movie'])
+    }
 
   }
   

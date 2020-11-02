@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/models/user';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,19 +17,52 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private _router : Router) { }
+  constructor(private _router : Router,private auth:AuthService) { }
   
   User={email:"",password:""};
-
+  user:User;
   ngOnInit(): void {
   }
 
-  loginUser () {
- 
-    localStorage.setItem('token', "omarahmad")
-    this._router.navigate(['./Main/movie'])
 
 
+  validateEmail(email) {
+    const regularExpression = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regularExpression.test(String(email).toLowerCase());
+   }
+   
+
+
+  loginUser() {
+    if(this.validateEmail(this.User.email)&& this.User.password !=""){
+      
+      if(this.auth.login(this.User)){
+      this._router.navigate(['./Main/movie'])
+      }
+      else{
+        alert("error")
+      }
+
+    }
+    else {
+      var email = document.getElementById("emailId")
+      email.classList.add("alert-validate")
+      var pass = document.getElementById("passId")
+      pass.classList.add("alert-validate")
+    }
+
+    
+
+  }
+
+  emailFocus(){
+    var email = document.getElementById("emailId")
+    email.classList.remove("alert-validate")
+  }
+
+  passFocus(){
+    var pass = document.getElementById("passId")
+    pass.classList.remove("alert-validate")
   }
 
 

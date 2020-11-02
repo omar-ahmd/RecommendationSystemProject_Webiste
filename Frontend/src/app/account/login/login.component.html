@@ -12,16 +12,16 @@
                     Login
                 </span>
 
-                <div class="form-group wrap-input100 validate-input m-b-16" data-validate="Valid email is required: ex@abc.xyz">
-                    <input class="input100 form-control" type="text" name="email" [(ngModel)]="User.email" placeholder="Email" required>
+                <div class="form-group wrap-input100 validate-input m-b-16" id="emailId" data-validate="Valid email is required: ex@abc.xyz">
+                    <input class="input100 form-control" type="text" (focus)="emailFocus()" name="email" [(ngModel)]="User.email" placeholder="Email" required>
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
                         <span class="lnr lnr-envelope"></span>
                     </span>
                 </div>
 
-                <div class="wrap-input100 form-group validate-input m-b-16" data-validate="Password is required">
-                    <input class="input100 form-control" type="password" name="pass" [(ngModel)]="User.password" placeholder="Password" required>
+                <div class="wrap-input100 form-group validate-input m-b-16" id="passId" data-validate="Password is required">
+                    <input class="input100 form-control" type="password" (focus)="passFocus()" name="pass" [(ngModel)]="User.password" placeholder="Password" required>
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
                         <span class="lnr lnr-lock"></span>

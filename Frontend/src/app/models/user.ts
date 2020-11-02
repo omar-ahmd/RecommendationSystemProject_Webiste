@@ -6,6 +6,7 @@
     firstName: string;
     lastName: string;
     token: string;
+    RatedMovies:[]
 }
 export class login {
     email: string;

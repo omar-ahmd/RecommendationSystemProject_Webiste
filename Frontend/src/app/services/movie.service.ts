@@ -84,19 +84,26 @@ export class MovieService {
         
     }
 
-    public getRecommendedMovies(email){
+    public getRecommendedMovies(){
+        return this.movie;
+
+    }
+    public getRecommendedmovies(movie){
+        return this.movie;
 
     }
     public getFilteredMovie(Genre,Rating,Releaseyear){
+        return this.movie;
 
     }
     public getNewMovies(){
+        return this.movie;
 
     }
 
 
     public TopRatedMovies(){
-
+        return this.movie;
     }
 
     public getMovies(){

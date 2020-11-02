@@ -3,6 +3,7 @@ import { MovieService } from 'src/app/services/movie.service';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
+import { Movie } from 'src/app/models/movie';
 @Component({
   selector: 'app-smovie',
   templateUrl: './smovie.component.html',
@@ -24,11 +25,12 @@ export class SmovieComponent implements OnInit {
   star:number=0;
   clicked:boolean=false;
   LoggedIn:boolean;
+  RMovies:Movie[];
   ngOnInit(): void {
     this.LoggedIn = this.authservice.loggedIn();
     this.id = this.route.snapshot.paramMap.get('id');
     this.movie = this.movies.getMovie(this.id);
-    console.log(this.id)
+    this.RMovies = this.movies.getRecommendedmovies(this.movie)
     
   }
 
