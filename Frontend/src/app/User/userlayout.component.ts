@@ -1,6 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { MovieService } from '../services/movie.service';
 
 
 
@@ -16,13 +17,15 @@ import { AuthService } from '../services/auth.service';
 export class UserlayoutComponent {
     constructor(
         private router: Router,
-        private authservice : AuthService
+        private authservice : AuthService,
+        private movieservice : MovieService
     ) { 
         this.LoggedIn = authservice.loggedIn();
     }
     LoggedIn:boolean=false;
     MenuBtn:boolean=false;
     SearchBtn:boolean=false;
+    Stext:any;
 
 
     MenuClick(){
@@ -37,6 +40,13 @@ export class UserlayoutComponent {
             if(this.MenuBtn)this.MenuBtn=false;
         }
         this.SearchBtn=!this.SearchBtn;
+    }
+
+    Search(){
+        console.log("jj")
+        this.movieservice.getSearch(this.Stext);
+        this.router.navigate(['/Main/search'])
+
     }
 
     SignOut(){

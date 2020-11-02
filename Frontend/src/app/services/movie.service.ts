@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Movie } from '../models/movie';
 import { HttpClient } from '@angular/common/http';
 import { Subject, Observable } from 'rxjs';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 @Injectable( {providedIn: 'root'})
 export class MovieService {
 
@@ -86,7 +87,8 @@ export class MovieService {
     public Ratmovie:any[];
     public NewMovie:any[];
     selectedMovie:any;
-    RecomMovies:any[]
+    RecomMovies:any[];
+    SearchMovie:any[]
 
     PopularURL="http://localhost:8000/api/popularity/"
     TopRatedURL="http://localhost:8000/api/vote/"
@@ -161,9 +163,6 @@ export class MovieService {
         
         
     }
-
-
-
     public TopRatedMovies(){
         this.http.get(this.TopRatedURL)
         .subscribe((data) => {
@@ -193,7 +192,6 @@ export class MovieService {
             this.DataChange1.next()
     })
     }
-    
     public getMovie(idd){
         this.http.post(this.MovieURL,{id:idd})
         .subscribe((data) => {
@@ -205,6 +203,10 @@ export class MovieService {
         ()=>{this.DataChange.next()
     })
         
+    }
+    public getSearch(text){
+        this.SearchMovie = this.NewMovie;
+        this.DataChange.next();
     }
 
     
