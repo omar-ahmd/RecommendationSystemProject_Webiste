@@ -19,6 +19,7 @@ import { Router } from '@angular/router';
 export class CatalogComponent implements OnInit {
 
   constructor(private movieservice:MovieService,private router:Router) { }
+  cursor=[1,2,3,4];
   Genres:any[];
   Genre:string="Action/Adventure";
   Rating:string="4-5"
@@ -46,9 +47,8 @@ export class CatalogComponent implements OnInit {
     this.num = Math.ceil(this.Genres.length/6)
     for (var index = 1; index <= this.num; index++) {
       this.numA.push(index)
-      
     }
-    console.log(this.numA)
+
     document.getElementById("1").classList.add("paginator__item--active")
 
   }
@@ -56,7 +56,23 @@ export class CatalogComponent implements OnInit {
     console.log(event)
   }
 
+  previous(){
+    if(this.cursor[0]>1){
+      for (let index = 3; index >= 0; index--) {
+        this.cursor[index]-=1;
+      }
+    }
+    
+  }
+  next(){
+    if(this.cursor[3]<this.num){}
+      for (let index = 0; index < this.cursor.length; index++) {
+        this.cursor[index]+=1;
+      }
+    }
+}
+
 
   
 
-}
+

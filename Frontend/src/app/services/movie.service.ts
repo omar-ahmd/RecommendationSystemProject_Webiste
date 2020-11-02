@@ -1,8 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Movie } from '../models/movie';
-
+import { HttpClient } from '@angular/common/http';
+import { Subject, Observable } from 'rxjs';
 @Injectable( {providedIn: 'root'})
 export class MovieService {
+
+    DataChange=new Subject<any>();
+    DataChange1=new Subject<any>();
+
     public movie: Movie[]=[
         {
             id: "1",
@@ -77,7 +82,17 @@ export class MovieService {
             Language:"",
         },
     ]
-     
+    public Popmovie:any[];
+    public Ratmovie:any[];
+    public NewMovie:any[];
+    selectedMovie:any;
+    RecomMovies:any[]
+
+    PopularURL="http://localhost:8000/api/popularity/"
+    TopRatedURL="http://localhost:8000/api/vote/"
+    NewMoviesURL="http://localhost:8000/api/year/"
+    MovieURL="http://localhost:8000/api/movieid/"
+    RecommendURL="http://localhost:8000/api/recommendation/"
     public Genre=[  'Crime',
                     'History',
                     'Adventure',
@@ -100,14 +115,12 @@ export class MovieService {
                     'Comedy']
 
     
-    constructor() {
-        
-    }
+    constructor(private http:HttpClient) { }
 
     public getGenres(){
-        return this.Genre
-
+        return this.Genre;
     }
+
 
     public getRecommendedMovies(){
         return this.movie;
@@ -122,25 +135,78 @@ export class MovieService {
 
     }
     public getNewMovies(){
-        return this.movie;
+        this.http.post(this.NewMoviesURL,{year:"2016"})
+        .subscribe((data) => {
+            this.NewMovie=data["Movies"]
+        },
+        (err)=>{
+            alert("error")
+        },
+        ()=>{this.DataChange.next()
+    })
 
     }
     public PopularMovies(){
-        return this.movie;
+        this.http.get(this.PopularURL)
+            .subscribe((data) => {
+                this.Popmovie=data["Movies"]
+            },
+            (err)=>{
+                alert("error")
+            },
+            ()=>{this.DataChange.next()
+        })
+                    
+        
+        
+        
     }
+
 
 
     public TopRatedMovies(){
-        return this.movie;
+        this.http.get(this.TopRatedURL)
+        .subscribe((data) => {
+            this.Ratmovie=data["Movies"]
+        },
+        (err)=>{
+            alert("error")
+        },
+        ()=>{this.DataChange.next()
+    })
+                
+    
+    
+               
     }
 
-    public getMovies(){
-        return this.movie;
+    public getMovies(id){
+        console.log(id)
+        this.http.post(this.RecommendURL,{id:id})
+        .subscribe((data) => {
+            this.RecomMovies=data["Recommendations"]
+        },
+        (err)=>{
+            alert("error")
+        },
+        ()=>{
+            this.DataChange1.next()
+    })
     }
     
-    public getMovie(id){
-        return this.movie[id=id-1]
+    public getMovie(idd){
+        this.http.post(this.MovieURL,{id:idd})
+        .subscribe((data) => {
+            this.selectedMovie=data["Movies"][0]
+        },
+        (err)=>{
+            alert("error")
+        },
+        ()=>{this.DataChange.next()
+    })
+        
     }
+
     
 
     

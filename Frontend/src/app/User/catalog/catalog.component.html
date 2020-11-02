@@ -133,16 +133,24 @@
             <div class="col-12">
                 <ul class="paginator">
                     <li class="paginator__item paginator__item--prev">
-                        <a href="#"><i class="icon ion-ios-arrow-back"></i></a>
+                        <div class="paginator__itema" (click)="previous()"><i class="icon ion-ios-arrow-back"></i></div>
                     </li>
 
-                    <li id="1" class="paginator__item"><a href="#">1</a></li>
-                    <li id="2" class="paginator__item"><a href="#">2</a></li>
-                    <li id="3" class="paginator__item"><a href="#">3</a></li>
-                    <li id="4" class="paginator__item"><a href="#">4</a></li>
+                    <li id="1" id="t1" class="paginator__item">
+                        <div class="paginator__itema" [innerHTML]="cursor[0]"></div>
+                    </li>
+                    <li id="2" id="t2" class="paginator__item">
+                        <div class="paginator__itema" [innerHTML]="cursor[1]"></div>
+                    </li>
+                    <li id="3" id="t3" class="paginator__item">
+                        <div class="paginator__itema" [innerHTML]="cursor[2]"></div>
+                    </li>
+                    <li id="4" id="t4" class="paginator__item">
+                        <div class="paginator__itema" [innerHTML]="cursor[3]"></div>
+                    </li>
 
                     <li class="paginator__item paginator__item--next">
-                        <a href="#"><i class="icon ion-ios-arrow-forward"></i></a>
+                        <div class="paginator__itema"><i (click)="next()" class="icon ion-ios-arrow-forward"></i></div>
                     </li>
                 </ul>
             </div>

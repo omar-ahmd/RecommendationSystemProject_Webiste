@@ -7,11 +7,10 @@ from sklearn.feature_extraction import text
 from sklearn.metrics.pairwise import sigmoid_kernel
 
 
-def getRecommendations(title):
+def getRecommendations(i):
+    id = int(str(i))
     movies_cleaned_df = pd.read_csv(
-        "D:\\Internship\\TEC\\Project\\backend\\Movies_Dataset.csv")
-    movies_cleaned_df = movies_cleaned_df.drop(
-        columns=['Unnamed: 0', 'keywords', 'runtime', 'production_companies', 'imdb_id'])
+        "/media/omar/My Files/Programming/WebApp cours/Project/Rainmaker-RecommendationSystem-Project/backend/Movies_Dataset.csv")
 
     # tfv = TfidfVectorizer(min_df=3,  max_features=None,
     #                      strip_accents='unicode', analyzer='word', token_pattern=r'\w{1,}',
@@ -39,11 +38,11 @@ def getRecommendations(title):
 
     # Reverse mapping of indices and movie titles
     indices = pd.Series(movies_cleaned_df.index,
-                        index=movies_cleaned_df['original_title']).drop_duplicates()
+                        index=movies_cleaned_df['id']).drop_duplicates()
 
-    def give_rec(title, sig):
+    def give_rec(id, sig):
         # Get the index corresponding to original_title
-        idx = indices[title]
+        idx = indices[id]
 
         # Get the pairwsie similarity scores
         sig_scores = list(enumerate(sig[idx]))
@@ -52,7 +51,7 @@ def getRecommendations(title):
         sig_scores = sorted(sig_scores, key=lambda x: x[1], reverse=True)
 
         # Scores of the 10 most similar movies
-        sig_scores = sig_scores[1:11]
+        sig_scores = sig_scores[1:19]
 
         # Movie indices
         movie_indices = [i[0] for i in sig_scores]
@@ -61,8 +60,8 @@ def getRecommendations(title):
         return movies_cleaned_df.iloc[movie_indices]
 
     # Testing our content-based recommendation system with the seminal film Spy Kids
-    #movies = give_rec(title=title, sig=sig)
-    cvmovies = give_rec(title=title, sig=sig2)
+    #movies = give_rec(id=id, sig=sig)
+    cvmovies = give_rec(id=id, sig=sig2)
     cvmovies = cvmovies.drop(
         columns=['Output'])
     # print(movies)

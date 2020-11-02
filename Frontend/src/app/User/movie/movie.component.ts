@@ -21,23 +21,37 @@ export class MovieComponent implements OnInit {
 
   constructor(movies : MovieService,private route:ActivatedRoute,private router:Router,private authservice : AuthService,private movieservice:MovieService) { 
     this.LoggedIn=this.authservice.loggedIn()
+    this.movieservice.PopularMovies();
+    this.movieservice.TopRatedMovies();
+    this.movieservice.getNewMovies()
+
+    
+    
+    
+    
+    this.movieservice.DataChange.subscribe(()=>{
+      this.NewMovie = this.movieservice.NewMovie;
+      this.load = true;
+      this.Toppopular = this.movieservice.Popmovie;
+      this.Toprated = this.movieservice.Ratmovie;
+
+      
+    })
 
   }
   TopRecommended:boolean=false;
   TopRated:boolean=true;
   Popular:boolean=false;
   LoggedIn:boolean=false;
-  NewMovie: any[]
+  load:boolean=false;
+  public NewMovie: any[]
   Toprated: any[]
   Recommended: any[]
   Toppopular:any[]
   Other:any[]
   ngOnInit(): void {
-
-    this.NewMovie = this.movieservice.getNewMovies()
-    this.Toprated = this.movieservice.TopRatedMovies()
-    this.Toppopular = this.movieservice.PopularMovies()
-    this.Other = this.movieservice.getMovies();
+    
+    
     
     if(this.LoggedIn){
       this.Recommended = this.movieservice.getRecommendedMovies()

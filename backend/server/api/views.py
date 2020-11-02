@@ -52,8 +52,8 @@ class UserMovieRatingViewSet(viewsets.ModelViewSet):
 def RecommendationsMovie(request):
     body_unicode = request.body.decode('utf-8')
     body_data = json.loads(body_unicode)
-    title = body_data['title']
-    res = getRecommendations(title)
+    id = body_data['id']
+    res = getRecommendations(id)
     return JsonResponse({'Recommendations': res})
 
 
@@ -102,7 +102,7 @@ def RecommendationsMovieByPopularity(request):
 
 
 @csrf_exempt
-@api_view(['GET'])
+@api_view(['GET','POST'])
 def RecommendationsMovieById(request):
     body_unicode = request.body.decode('utf-8')
     body_data = json.loads(body_unicode)

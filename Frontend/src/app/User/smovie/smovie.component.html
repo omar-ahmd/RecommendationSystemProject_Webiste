@@ -39,11 +39,11 @@
                                 </div>
                                 <div *ngIf="LoggedIn" class="card__wrap" style="margin-top:10px;">
                                     <span class="card__rate_act1">
-                                        Rated {{movie.rating}} <i class="icon ion-ios-star"></i> </span>
+                                        Rated {{movie.rating}}/10 <i class="icon ion-ios-star"></i> </span>
 
                                 </div>
 
-                                <div class="card__wrap">
+                                <div *ngIf="!LoggedIn" class="card__wrap">
                                     <span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
 
                                 </div>
@@ -52,26 +52,26 @@
                                     <li>
                                         <span>Genre:</span>
                                         <span class="card__category">
-                                            
+                                            {{movie.genres}}
                                         </span>
                                     </li>
                                     <li>
                                         <span>
                                             Release year:
-                                        </span> {{movie.Realeaseyear}}
+                                        </span> {{movie.release_date}}
                                     </li>
                                     <li>
                                         <span>
                                             Running time:
 
-                                        </span> {{movie.Runningtime}}
+                                        </span> {{movie.Runningtime}} min
                                     </li>
                                     <li>
                                         <span>
-                                            Country:
+                                            Language:
                                          </span>
                                         <a href="#">
-                                            {{movie.Country}}
+                                            {{movie.Language}}
                                         </a>
                                     </li>
                                 </ul>
@@ -93,7 +93,7 @@
     <section class="content">
         <div class="content__head">
             <div class="container">
-                <div class="row">
+                <div *ngIf="done" class="row">
                     <!-- section title -->
                     <div class="col-12" style="margin-top: 50px;">
                         <h2 class="section__title">You may also like...</h2>

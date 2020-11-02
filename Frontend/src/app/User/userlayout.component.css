@@ -2240,6 +2240,18 @@ ul {
     border-radius: 4px;
 }
 
+.paginator__itema {
+    font-size: 16px;
+    height: 50px;
+    width: 50px;
+    display: block;
+    line-height: 50px;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+
 .paginator__item:hover a {
     color: #fff;
 }
