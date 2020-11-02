@@ -5,7 +5,7 @@ from .serializers import MovieSerializer, UsersSerializer, UserMovieRatingSerial
 from .models import Movie, Users, UserMovieRating
 from django.http import JsonResponse
 from .recommendation import getRecommendations
-from .responses_1 import getBygenres, getByyear, getByrating, getByVotes, getByPopularity
+from .responses_1 import getBygenres, getByyear, getByrating, getByVotes, getByPopularity, getById, getBy_genres_year_rating
 from django.views.decorators.csrf import csrf_exempt
 import json
 #from rest_framework import permissions
@@ -20,6 +20,26 @@ class MovieViewSet(viewsets.ModelViewSet):
 class UsersViewSet(viewsets.ModelViewSet):
     queryset = Users.objects.all()
     serializer_class = UsersSerializer
+
+
+@csrf_exempt
+@api_view(['GET', 'POST'])
+def AuthUsername(request):
+    res = ""
+    if request.method == "POST":
+        body_unicode = request.body.decode('utf-8')
+        body_data = json.loads(body_unicode)
+        u = body_data['username']
+        p = body_data['password']
+        print(u)
+        try:
+            queryuser = Users.objects.get(username=u)
+            print(Users.objects.get(id=1).data)
+            if p == queryuser.password:
+                res = "Logged in"
+        except:
+            res = "error... Login failed"
+    return JsonResponse({'Login': res})
 
 
 class UserMovieRatingViewSet(viewsets.ModelViewSet):
@@ -78,4 +98,26 @@ def RecommendationsMovieByVote(request):
 @api_view(['GET'])
 def RecommendationsMovieByPopularity(request):
     res = getByPopularity()
+    return JsonResponse({'Movies': res})
+
+
+@csrf_exempt
+@api_view(['GET'])
+def RecommendationsMovieById(request):
+    body_unicode = request.body.decode('utf-8')
+    body_data = json.loads(body_unicode)
+    id = body_data['id']
+    res = getById(id)
+    return JsonResponse({'Movies': res})
+
+
+@csrf_exempt
+@api_view(['GET'])
+def RecommendationsMovieBy_genre_year_rating(request):
+    body_unicode = request.body.decode('utf-8')
+    body_data = json.loads(body_unicode)
+    genre = body_data['genre']
+    year = body_data['year']
+    rating = body_data['rating']
+    res = getBy_genres_year_rating(genre, year, rating)
     return JsonResponse({'Movies': res})

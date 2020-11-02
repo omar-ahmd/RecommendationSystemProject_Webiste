@@ -25,4 +25,10 @@ urlpatterns = [
          name="vote"),
     path('api/popularity/', views.RecommendationsMovieByPopularity,
          name="popularity"),
+    path('api/movieid/', views.RecommendationsMovieById,
+         name="movieid"),
+    path('api/genre-year-id/', views.RecommendationsMovieBy_genre_year_rating,
+         name="genre-year-id"),
+    path('login/', views.AuthUsername,
+         name="login"),
 ]

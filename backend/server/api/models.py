@@ -21,7 +21,7 @@ class Users(models.Model):
 
 
 class UserMovieRating(models.Model):
-    user_id = models.CharField(max_length=128)
+    user_id = models.ForeignKey(Users, on_delete=models.CASCADE)
     movie_id = models.CharField(max_length=128)
     rating = models.PositiveSmallIntegerField()
 
