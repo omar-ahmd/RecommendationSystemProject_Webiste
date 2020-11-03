@@ -5,7 +5,7 @@ from .serializers import MovieSerializer, UsersSerializer, UserMovieRatingSerial
 from .models import Movie, Users, UserMovieRating
 from django.http import JsonResponse
 from .recommendation import getRecommendations
-from .responses_1 import getBygenres, getByyear, getByrating, getByVotes, getByPopularity, getById, getBy_genres_year_rating
+from .responses_1 import getBygenres, getByyear, getByrating, getByVotes, getByPopularity, getById, getBy_genres_year_rating, getBy_search
 from django.views.decorators.csrf import csrf_exempt
 import json
 #from rest_framework import permissions
@@ -25,7 +25,7 @@ class UsersViewSet(viewsets.ModelViewSet):
 @csrf_exempt
 @api_view(['GET', 'POST'])
 def AuthUsername(request):
-    res = ""
+    res = "Login failed"
     if request.method == "POST":
         body_unicode = request.body.decode('utf-8')
         body_data = json.loads(body_unicode)
@@ -34,17 +34,40 @@ def AuthUsername(request):
         print(u)
         try:
             queryuser = Users.objects.get(username=u)
-            print(Users.objects.get(id=1).data)
-            if p == queryuser.password:
+            if p == str(queryuser.password):
                 res = "Logged in"
         except:
-            res = "error... Login failed"
+            res = "error..."
     return JsonResponse({'Login': res})
 
 
 class UserMovieRatingViewSet(viewsets.ModelViewSet):
     queryset = UserMovieRating.objects.all()
     serializer_class = UserMovieRatingSerializer
+
+    @csrf_exempt
+    @api_view(['GET', 'POST'])
+    def GetUserRating(request):
+        res = ""
+        if request.method == "POST":
+            body_unicode = request.body.decode('utf-8')
+            body_data = json.loads(body_unicode)
+            u = body_data['username']
+            p = body_data['password']
+            print(u)
+            try:
+                queryuser = Users.objects.get(username=u)
+                if p == str(queryuser.password):
+                    res = "Logged in"
+            except:
+                res = "error..."
+        elif request.method == "GET":
+            body_unicode = request.body.decode('utf-8')
+            body_data = json.loads(body_unicode)
+            u = body_data['username']
+            p = body_data['password']
+
+        return JsonResponse({'Login': res})
 
 
 @csrf_exempt
@@ -102,7 +125,7 @@ def RecommendationsMovieByPopularity(request):
 
 
 @csrf_exempt
-@api_view(['GET','POST'])
+@api_view(['GET', 'POST'])
 def RecommendationsMovieById(request):
     body_unicode = request.body.decode('utf-8')
     body_data = json.loads(body_unicode)
@@ -120,4 +143,14 @@ def RecommendationsMovieBy_genre_year_rating(request):
     year = body_data['year']
     rating = body_data['rating']
     res = getBy_genres_year_rating(genre, year, rating)
+    return JsonResponse({'Movies': res})
+
+
+@ csrf_exempt
+@ api_view(['GET', 'POST'])
+def RecommendationsMovieBy_Search(request):
+    body_unicode = request.body.decode('utf-8')
+    body_data = json.loads(body_unicode)
+    title = body_data['title']
+    res = getBy_search(title)
     return JsonResponse({'Movies': res})
