@@ -29,6 +29,8 @@ urlpatterns = [
          name="movieid"),
     path('api/genre-year-id/', views.RecommendationsMovieBy_genre_year_rating,
          name="genre-year-id"),
+    path('api/search/', views.RecommendationsMovieBy_Search,
+         name="search"),
     path('login/', views.AuthUsername,
          name="login"),
 ]

@@ -86,7 +86,7 @@ def getBy_genres_year_rating(genre, year, rating):
     return parsed
 
 
-def getBy_genres_year_rating(genre, year, rating):
+def getBy_search(title):
     movies_cleaned_df = pd.read_csv(
         "/media/omar/My Files/Programming/WebApp cours/Project/Rainmaker-RecommendationSystem-Project/backend/Movies_Dataset.csv")
     movies_cleaned_df['description'] = movies_cleaned_df['description'].str.lower()
