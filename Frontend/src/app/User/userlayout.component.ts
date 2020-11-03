@@ -43,9 +43,11 @@ export class UserlayoutComponent {
     }
 
     Search(){
-        console.log("jj")
         this.movieservice.getSearch(this.Stext);
-        this.router.navigate(['/Main/search'])
+        this.movieservice.DataChange.subscribe(()=>{
+            this.router.navigate(['/Main/search'])
+        })
+        
 
     }
 

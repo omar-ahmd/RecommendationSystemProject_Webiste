@@ -89,12 +89,15 @@ export class MovieService {
     selectedMovie:any;
     RecomMovies:any[];
     SearchMovie:any[]
+    FilterMovie:any[]
 
     PopularURL="http://localhost:8000/api/popularity/"
     TopRatedURL="http://localhost:8000/api/vote/"
     NewMoviesURL="http://localhost:8000/api/year/"
     MovieURL="http://localhost:8000/api/movieid/"
     RecommendURL="http://localhost:8000/api/recommendation/"
+    SearchURL="http://localhost:8000/api/search/"
+    FilterURL="http://localhost:8000/api/genre-year-id/"
     public Genre=[  'Crime',
                     'History',
                     'Adventure',
@@ -133,7 +136,18 @@ export class MovieService {
 
     }
     public getFilteredMovie(Genre,Rating,Releaseyear){
-        return this.movie;
+
+        this.http.post(this.FilterURL,{genres:Genre,rating:Rating,release_date:Releaseyear})
+        .subscribe((data) => {
+            this.FilterMovie=data["Movies"]
+            console.log(this.FilterMovie)
+        },
+        (err)=>{
+            alert("error")
+        },
+        ()=>{
+            this.DataChange.next()
+    })
 
     }
     public getNewMovies(){
@@ -205,8 +219,19 @@ export class MovieService {
         
     }
     public getSearch(text){
-        this.SearchMovie = this.NewMovie;
-        this.DataChange.next();
+        this.http.post(this.SearchURL,{title:text})
+        .subscribe((data) => {
+            this.SearchMovie=data["Movies"]
+            console.log(this.SearchMovie)
+        },
+        (err)=>{
+            alert("error")
+        },
+        ()=>{this.DataChange.next();
+    })
+
+       
+
     }
 
     

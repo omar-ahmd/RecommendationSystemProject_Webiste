@@ -32,7 +32,7 @@
                             <span class="filter__item-label">GENRE:</span>
 
                             <div class="filter__item-btn dropdown-toggle" role="navigation" id="filter-genre" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <input type="button" name="genre" [(ngModel)]="Genre" value="Action/Adventure" #genre>
+                                <input type="button" name="genre" [(ngModel)]="Genre" value="{{Genres[0]}}" #genre>
                                 <span></span>
                             </div>
 
@@ -51,7 +51,7 @@
 
                         <!-- filter item -->
                         <div class="filter__item" id="filter__rate">
-                            <span class="filter__item-label">IMBd:</span>
+                            <span class="filter__item-label">Rating:</span>
 
                             <div class="filter__item-btn dropdown-toggle" role="navigation" id="filter-genre" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <input type="button" name="rating" [(ngModel)]="Rating" value="Action/Adventure">
@@ -61,6 +61,11 @@
 
                             <ul class="filter__item-menu dropdown-menu scrollbar-dropdown" aria-labelledby="filter-genre">
                                 <perfect-scrollbar style="height: 150px;">
+                                    <li (click)="Clickrating($event)">9-10</li>
+                                    <li (click)="Clickrating($event)">8-9</li>
+                                    <li (click)="Clickrating($event)">7-8</li>
+                                    <li (click)="Clickrating($event)">6-7</li>
+                                    <li (click)="Clickrating($event)">5-6</li>
                                     <li (click)="Clickrating($event)">4-5</li>
                                     <li (click)="Clickrating($event)">3-4</li>
                                     <li (click)="Clickrating($event)">2-3</li>
@@ -85,6 +90,20 @@
                                 <perfect-scrollbar style="height: 150px;">
                                     <li (click)="Clickreleaseyear($event)">2020</li>
                                     <li (click)="Clickreleaseyear($event)">2019</li>
+                                    <li (click)="Clickreleaseyear($event)">2018</li>
+                                    <li (click)="Clickreleaseyear($event)">2017</li>
+                                    <li (click)="Clickreleaseyear($event)">2016</li>
+                                    <li (click)="Clickreleaseyear($event)">2015</li>
+                                    <li (click)="Clickreleaseyear($event)">2014</li>
+                                    <li (click)="Clickreleaseyear($event)">2013</li>
+                                    <li (click)="Clickreleaseyear($event)">2012</li>
+                                    <li (click)="Clickreleaseyear($event)">2011</li>
+                                    <li (click)="Clickreleaseyear($event)">2010</li>
+                                    <li (click)="Clickreleaseyear($event)">2009</li>
+                                    <li (click)="Clickreleaseyear($event)">2008</li>
+                                    <li (click)="Clickreleaseyear($event)">2007</li>
+                                    <li (click)="Clickreleaseyear($event)">2006</li>
+                                    <li (click)="Clickreleaseyear($event)">2005</li>
                                 </perfect-scrollbar>
                             </ul>
                         </div>

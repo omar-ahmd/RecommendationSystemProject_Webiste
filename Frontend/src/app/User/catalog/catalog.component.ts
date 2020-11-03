@@ -21,7 +21,7 @@ export class CatalogComponent implements OnInit {
   constructor(private movieservice:MovieService,private router:Router) { }
   cursor=[1,2,3,4];
   Genres:any[];
-  Genre:string="Action/Adventure";
+  Genre:string;
   Rating:string="4-5"
   Releaseyear:string="2020";
   FilteredMovies:any[]
@@ -38,18 +38,28 @@ export class CatalogComponent implements OnInit {
   }
 
   ApplyFilter(){
-    this.FilteredMovies = this.movieservice.getFilteredMovie(this.Genre,this.Rating,this.Releaseyear)
+    this.movieservice.getFilteredMovie(this.Genre,this.Rating,this.Releaseyear)
+    this.movieservice.DataChange.subscribe(()=>{
+      this.FilteredMovies = this.movieservice.FilterMovie
+
+    })
     
   }
   ngOnInit(): void {
     this.Genres = this.movieservice.getGenres()
-    this.FilteredMovies = this.movieservice.getFilteredMovie(this.Genre,this.Rating,this.Releaseyear)
+    this.Genre = this.Genres[0]
     this.num = Math.ceil(this.Genres.length/6)
     for (var index = 1; index <= this.num; index++) {
       this.numA.push(index)
     }
 
-    document.getElementById("1").classList.add("paginator__item--active")
+    this.movieservice.getFilteredMovie(this.Genre,this.Rating,this.Releaseyear)
+    this.movieservice.DataChange.subscribe(()=>{
+      this.FilteredMovies = this.movieservice.FilterMovie
+      
+    })
+
+    document.getElementById("t1").classList.add("paginator__item--active")
 
   }
   pagClick(event){

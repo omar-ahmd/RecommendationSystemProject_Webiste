@@ -135,12 +135,12 @@ def RecommendationsMovieById(request):
 
 
 @csrf_exempt
-@api_view(['GET'])
+@api_view(['GET','POST'])
 def RecommendationsMovieBy_genre_year_rating(request):
     body_unicode = request.body.decode('utf-8')
     body_data = json.loads(body_unicode)
-    genre = body_data['genre']
-    year = body_data['year']
+    genre = body_data['genres']
+    year = body_data['release_date']
     rating = body_data['rating']
     res = getBy_genres_year_rating(genre, year, rating)
     return JsonResponse({'Movies': res})

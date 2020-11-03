@@ -18,12 +18,14 @@ export class SearchComponent implements OnInit {
 
   Search:any[];
   constructor(private movieservice : MovieService,private route:ActivatedRoute,private router:Router) { 
-    this.Search = this.movieservice.NewMovie; 
+    
    
   }
  
 
   ngOnInit(): void {
+    this.movieservice.DataChange.subscribe(()=>{
+    this.Search = this.movieservice.SearchMovie; })
   }
 
 }
