@@ -74,8 +74,10 @@ def getById(id):
 
 
 def getBy_genres_year_rating(genre, year, rating):
+    
     movies_cleaned_df = pd.read_csv(
         "/media/omar/My Files/Programming/WebApp cours/Project/Rainmaker-RecommendationSystem-Project/backend/Movies_Dataset.csv")
+    res=movies_cleaned_df
     if genre == 'all':
         a = movies_cleaned_df
     else:

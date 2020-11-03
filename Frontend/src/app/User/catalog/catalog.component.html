@@ -54,13 +54,14 @@
                             <span class="filter__item-label">Rating:</span>
 
                             <div class="filter__item-btn dropdown-toggle" role="navigation" id="filter-genre" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <input type="button" name="rating" [(ngModel)]="Rating" value="Action/Adventure">
+                                <input type="button" name="rating" [(ngModel)]="Rating" value="all">
                                 <span></span>
                             </div>
 
 
                             <ul class="filter__item-menu dropdown-menu scrollbar-dropdown" aria-labelledby="filter-genre">
                                 <perfect-scrollbar style="height: 150px;">
+                                    <li (click)="Clickrating($event)">all</li>
                                     <li (click)="Clickrating($event)">9-10</li>
                                     <li (click)="Clickrating($event)">8-9</li>
                                     <li (click)="Clickrating($event)">7-8</li>
@@ -81,13 +82,14 @@
                             <span class="filter__item-label">RELEASE YEAR:</span>
 
                             <div class="filter__item-btn dropdown-toggle" role="navigation" id="filter-genre" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <input type="button" name="rating" [(ngModel)]="Releaseyear" value="Action/Adventure">
+                                <input type="button" name="rating" [(ngModel)]="Releaseyear" value="all">
                                 <span></span>
                             </div>
 
 
                             <ul class="filter__item-menu dropdown-menu scrollbar-dropdown" aria-labelledby="filter-genre">
                                 <perfect-scrollbar style="height: 150px;">
+                                    <li (click)="Clickreleaseyear($event)">all</li>
                                     <li (click)="Clickreleaseyear($event)">2020</li>
                                     <li (click)="Clickreleaseyear($event)">2019</li>
                                     <li (click)="Clickreleaseyear($event)">2018</li>
@@ -148,33 +150,6 @@
             </div>
             <!-- end card -->
 
-            <!-- paginator -->
-            <div class="col-12">
-                <ul class="paginator">
-                    <li class="paginator__item paginator__item--prev">
-                        <div class="paginator__itema" (click)="previous()"><i class="icon ion-ios-arrow-back"></i></div>
-                    </li>
-
-                    <li id="1" id="t1" class="paginator__item">
-                        <div class="paginator__itema" [innerHTML]="cursor[0]"></div>
-                    </li>
-                    <li id="2" id="t2" class="paginator__item">
-                        <div class="paginator__itema" [innerHTML]="cursor[1]"></div>
-                    </li>
-                    <li id="3" id="t3" class="paginator__item">
-                        <div class="paginator__itema" [innerHTML]="cursor[2]"></div>
-                    </li>
-                    <li id="4" id="t4" class="paginator__item">
-                        <div class="paginator__itema" [innerHTML]="cursor[3]"></div>
-                    </li>
-
-                    <li class="paginator__item paginator__item--next">
-                        <div class="paginator__itema"><i (click)="next()" class="icon ion-ios-arrow-forward"></i></div>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- end paginator -->
         </div>
     </div>
 </div>

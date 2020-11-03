@@ -21,9 +21,9 @@ export class CatalogComponent implements OnInit {
   constructor(private movieservice:MovieService,private router:Router) { }
   cursor=[1,2,3,4];
   Genres:any[];
-  Genre:string;
-  Rating:string="4-5"
-  Releaseyear:string="2020";
+  Genre:string="all"
+  Rating:string="all"
+  Releaseyear:string="all";
   FilteredMovies:any[]
   num:any;
   numA:Array<any>=[]

@@ -97,8 +97,8 @@ export class MovieService {
     MovieURL="http://localhost:8000/api/movieid/"
     RecommendURL="http://localhost:8000/api/recommendation/"
     SearchURL="http://localhost:8000/api/search/"
-    FilterURL="http://localhost:8000/api/genre-year-id/"
-    public Genre=[  'Crime',
+    FilterURL="http://localhost:8000/api/genre-year-rating/"
+    public Genre=[ 'all', 'Crime',
                     'History',
                     'Adventure',
                     'Family',
