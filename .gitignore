@@ -1,3 +1,11 @@
 backend/env/ 
 backend/python_tips.txt
 Frontend/node_modules
+*.log
+*.pot
+
+*.pyc
+
+*/*/*/__pycache__/
+*/*/__pycache__/
+*/__pycache__/

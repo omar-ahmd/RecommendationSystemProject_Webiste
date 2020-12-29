@@ -1,8 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Movie } from '../models/movie';
-
+import { HttpClient } from '@angular/common/http';
+import { Subject, Observable } from 'rxjs';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 @Injectable( {providedIn: 'root'})
 export class MovieService {
+
+    DataChange=new Subject<any>();
+    DataChange1=new Subject<any>();
+
     public movie: Movie[]=[
         {
             id: "1",
@@ -77,8 +83,22 @@ export class MovieService {
             Language:"",
         },
     ]
-     
-    public Genre=[  'Crime',
+    public Popmovie:any[];
+    public Ratmovie:any[];
+    public NewMovie:any[];
+    selectedMovie:any;
+    RecomMovies:any[];
+    SearchMovie:any[]
+    FilterMovie:any[]
+
+    PopularURL="http://localhost:8000/api/popularity/"
+    TopRatedURL="http://localhost:8000/api/vote/"
+    NewMoviesURL="http://localhost:8000/api/year/"
+    MovieURL="http://localhost:8000/api/movieid/"
+    RecommendURL="http://localhost:8000/api/recommendation/"
+    SearchURL="http://localhost:8000/api/search/"
+    FilterURL="http://localhost:8000/api/genre-year-rating/"
+    public Genre=[ 'all', 'Crime',
                     'History',
                     'Adventure',
                     'Family',
@@ -100,14 +120,12 @@ export class MovieService {
                     'Comedy']
 
     
-    constructor() {
-        
-    }
+    constructor(private http:HttpClient) { }
 
     public getGenres(){
-        return this.Genre
-
+        return this.Genre;
     }
+
 
     public getRecommendedMovies(){
         return this.movie;
@@ -118,29 +136,104 @@ export class MovieService {
 
     }
     public getFilteredMovie(Genre,Rating,Releaseyear){
-        return this.movie;
+
+        this.http.post(this.FilterURL,{genres:Genre,rating:Rating,release_date:Releaseyear})
+        .subscribe((data) => {
+            this.FilterMovie=data["Movies"]
+            console.log(this.FilterMovie)
+        },
+        (err)=>{
+            alert("error")
+        },
+        ()=>{
+            this.DataChange.next()
+    })
 
     }
     public getNewMovies(){
-        return this.movie;
+        this.http.post(this.NewMoviesURL,{year:"2016"})
+        .subscribe((data) => {
+            this.NewMovie=data["Movies"]
+        },
+        (err)=>{
+            alert("error")
+        },
+        ()=>{this.DataChange.next()
+    })
 
     }
     public PopularMovies(){
-        return this.movie;
+        this.http.get(this.PopularURL)
+            .subscribe((data) => {
+                this.Popmovie=data["Movies"]
+            },
+            (err)=>{
+                alert("error")
+            },
+            ()=>{this.DataChange.next()
+        })
+                    
+        
+        
+        
     }
-
-
     public TopRatedMovies(){
-        return this.movie;
+        this.http.get(this.TopRatedURL)
+        .subscribe((data) => {
+            this.Ratmovie=data["Movies"]
+        },
+        (err)=>{
+            alert("error")
+        },
+        ()=>{this.DataChange.next()
+    })
+                
+    
+    
+               
     }
 
-    public getMovies(){
-        return this.movie;
+    public getMovies(id){
+        console.log(id)
+        this.http.post(this.RecommendURL,{id:id})
+        .subscribe((data) => {
+            this.RecomMovies=data["Recommendations"]
+        },
+        (err)=>{
+            alert("error")
+        },
+        ()=>{
+            this.DataChange1.next()
+    })
     }
-    
-    public getMovie(id){
-        return this.movie[id=id-1]
+    public getMovie(idd){
+        this.http.post(this.MovieURL,{id:idd})
+        .subscribe((data) => {
+            this.selectedMovie=data["Movies"][0]
+        },
+        (err)=>{
+            alert("error")
+        },
+        ()=>{this.DataChange.next()
+    })
+        
     }
+    public getSearch(text){
+        this.http.post(this.SearchURL,{title:text})
+        .subscribe((data) => {
+            this.SearchMovie=data["Movies"]
+            console.log(this.SearchMovie)
+        },
+        (err)=>{
+            alert("error")
+        },
+        ()=>{this.DataChange.next();
+    })
+
+       
+
+    }
+
     
 
     

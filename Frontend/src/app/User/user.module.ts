@@ -17,6 +17,7 @@ import { OwlModule } from 'ngx-owl-carousel';
 import { SmovieComponent } from './smovie/smovie.component';
 import { AuthService } from '../services/auth.service';
 import { CatalogComponent } from './catalog/catalog.component';
+import { SearchComponent } from './search/search.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -31,7 +32,8 @@ import { CatalogComponent } from './catalog/catalog.component';
         UserlayoutComponent,
         MovieComponent,
         SmovieComponent,
-        CatalogComponent
+        CatalogComponent,
+        SearchComponent
     ],
     providers: [{
         provide: PERFECT_SCROLLBAR_CONFIG,

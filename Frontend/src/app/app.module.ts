@@ -3,11 +3,8 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-import { AccountModule } from './account/account.module';
-import { UserModule } from './User/user.module';
+import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
-import { AuthGuard } from './Auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -18,6 +15,7 @@ import { AuthGuard } from './Auth/auth.guard';
     BrowserModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    HttpClientModule
     
     
     

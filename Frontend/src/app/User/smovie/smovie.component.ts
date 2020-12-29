@@ -26,11 +26,24 @@ export class SmovieComponent implements OnInit {
   clicked:boolean=false;
   LoggedIn:boolean;
   RMovies:Movie[];
+  done=false;
   ngOnInit(): void {
+    
     this.LoggedIn = this.authservice.loggedIn();
     this.id = this.route.snapshot.paramMap.get('id');
-    this.movie = this.movies.getMovie(this.id);
-    this.RMovies = this.movies.getRecommendedmovies(this.movie)
+
+    this.movies.getMovie(this.id);
+    this.movies.getMovies(this.id)
+ 
+
+    this.movies.DataChange.subscribe(()=>{
+      this.movie = this.movies.selectedMovie;
+    })
+    this.movies.DataChange1.subscribe(()=>{
+      this.RMovies = this.movies.RecomMovies
+      this.done=true
+    })
+    
     
   }
 

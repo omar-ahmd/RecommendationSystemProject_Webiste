@@ -64,9 +64,9 @@
                 <div class="row ">
                     <div class="col-12 ">
                         <div class="header__search-content ">
-                            <input type="text " placeholder="Search for a movie, TV Series that you are looking for ">
+                            <input type="text" name="Stext" [(ngModel)]="Stext" placeholder="Search for a movie that you are looking for ">
 
-                            <button type="button ">search</button>
+                            <button type="button" (click)="Search()">search</button>
                         </div>
                     </div>
                 </div>
